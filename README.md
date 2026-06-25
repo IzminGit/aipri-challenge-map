@@ -7,20 +7,24 @@
 現在地取得と最新取得を安定して使う場合は、同梱サーバーで起動します。
 
 ```powershell
-& 'C:\Users\USER\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' .\server.mjs
+& 'C:\Users\USER\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' .\tools\local-server.mjs
 ```
 
 起動後に `http://127.0.0.1:4173/` を開きます。
 
 ## 最新情報を取得
 
-サーバー起動中は画面右上の更新ボタンで公式ページを再取得します。
+Vercel上では画面右上の更新ボタンが `/api/refresh` を呼び出し、公式ページから最新情報を取得します。
+
+ローカルサーバー起動中も同じボタンで公式ページを再取得します。
 
 手動更新する場合:
 
 ```powershell
 & 'C:\Users\USER\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' .\tools\refresh-data.mjs
 ```
+
+手動更新した結果を初期表示データとして残す場合は、生成された `aichi-events.json` と `data.js` をコミットします。
 
 ## データ元
 

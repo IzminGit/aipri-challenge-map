@@ -2,9 +2,9 @@ import http from "node:http";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { refreshData } from "./tools/refresh-data.mjs";
+import { refreshData } from "./refresh-data.mjs";
 
-const ROOT_DIR = path.dirname(fileURLToPath(import.meta.url));
+const ROOT_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const PORT = Number(process.env.PORT || 4173);
 
 const contentTypes = new Map([

@@ -26,7 +26,7 @@ const addressOverrides = new Map([
   ["モーリーファンタジー豊川開運通店", "愛知県豊川市開運通2-31"],
 ]);
 
-export async function refreshData({ log = true } = {}) {
+export async function refreshData({ log = true, writeFiles = true } = {}) {
   const firstPage = await fetchOfficialPage(1);
   const pageCount = getPageCount(firstPage);
   const htmlPages = [firstPage];
@@ -48,14 +48,16 @@ export async function refreshData({ log = true } = {}) {
     shops,
   };
 
-  await attachLocations(data, log);
+  await attachLocations(data, log, { writeCache: writeFiles });
   data.generatedAt = new Date().toISOString();
 
-  await fs.writeFile(path.join(ROOT_DIR, "aichi-events.json"), `${JSON.stringify(data, null, 2)}\n`);
-  await fs.writeFile(
-    path.join(ROOT_DIR, "data.js"),
-    `window.AIPRI_EVENT_DATA = ${JSON.stringify(data, null, 2)};\n`,
-  );
+  if (writeFiles) {
+    await fs.writeFile(path.join(ROOT_DIR, "aichi-events.json"), `${JSON.stringify(data, null, 2)}\n`);
+    await fs.writeFile(
+      path.join(ROOT_DIR, "data.js"),
+      `window.AIPRI_EVENT_DATA = ${JSON.stringify(data, null, 2)};\n`,
+    );
+  }
 
   if (log) {
     const eventCount = shops.reduce((sum, shop) => sum + shop.events.length, 0);
@@ -208,7 +210,7 @@ function decodeEntities(value) {
   return value.replace(/&(nbsp|amp|lt|gt|quot);|&#039;/g, (match) => entityMap[match] ?? match);
 }
 
-async function attachLocations(data, log) {
+async function attachLocations(data, log, { writeCache = true } = {}) {
   const cachePath = path.join(__dirname, "gsi-geocode-cache.json");
   const cache = await readJson(cachePath, {});
 
@@ -216,7 +218,9 @@ async function attachLocations(data, log) {
     const key = `${shop.name}|${shop.address}`;
     if (!cache[key]) {
       cache[key] = await geocode(shop);
-      await fs.writeFile(cachePath, `${JSON.stringify(cache, null, 2)}\n`);
+      if (writeCache) {
+        await fs.writeFile(cachePath, `${JSON.stringify(cache, null, 2)}\n`);
+      }
       await sleep(250);
     }
     shop.location = cache[key];
@@ -277,7 +281,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   refreshData().catch((error) => {
     console.error(error);
     process.exitCode = 1;

@@ -2,7 +2,7 @@ window.AIPRI_EVENT_DATA = {
   "eventName": "お店でアイプリコンテスト「バルーンフェスコーデ」をゲット！",
   "prefecture": "愛知県",
   "sourceUrl": "https://aipri.jp/event/result.html?event_id%5B%5D=9&key_word=&pref_id=23&event_year=&event_month=&event_date=&shop_flag%5B%5D=1",
-  "fetchedAt": "2026-06-25T11:46:26.249Z",
+  "fetchedAt": "2026-06-25T11:53:15.171Z",
   "shops": [
     {
       "id": "shop-1",
@@ -1081,5 +1081,5 @@ window.AIPRI_EVENT_DATA = {
       }
     }
   ],
-  "generatedAt": "2026-06-25T11:46:26.258Z"
+  "generatedAt": "2026-06-25T11:53:15.173Z"
 };
