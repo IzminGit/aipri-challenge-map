@@ -5,6 +5,7 @@
   --line: #ffd3e9;
   --paper: #ffffff;
   --wash: #fff7fc;
+  --aoi-sky: #8ee8fb;
   --aqua: #00a8c8;
   --aqua-dark: #007f9c;
   --coral: #ff69ab;
@@ -61,9 +62,9 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 22px clamp(16px, 4vw, 42px) 16px;
-  background: var(--coral);
+  background: var(--aoi-sky);
   border-bottom: 4px solid var(--sun);
-  box-shadow: 0 10px 24px rgba(255, 105, 171, 0.18);
+  box-shadow: 0 10px 24px rgba(0, 168, 200, 0.18);
 }
 
 .brand {
@@ -72,7 +73,7 @@ a {
 
 .kicker {
   margin: 0 0 2px;
-  color: #ffffff;
+  color: var(--ink);
   font-size: 0.9rem;
   font-weight: 800;
   text-shadow: none;
@@ -82,7 +83,7 @@ h1 {
   margin: 0;
   font-size: clamp(1.35rem, 1.1rem + 1vw, 2rem);
   line-height: 1.2;
-  color: #ffffff;
+  color: var(--ink);
   text-shadow: none;
 }
 
@@ -92,7 +93,7 @@ h1 {
   align-items: center;
   justify-content: flex-end;
   min-width: min(480px, 46vw);
-  color: #ffffff;
+  color: var(--ink);
   font-size: 0.86rem;
   text-align: right;
 }
@@ -112,7 +113,7 @@ h1 {
   border: 2px solid #ffffff;
   border-radius: 8px;
   background: #ffffff;
-  color: var(--coral-dark);
+  color: var(--aqua-dark);
   text-decoration: none;
   font-weight: 800;
 }
@@ -122,7 +123,7 @@ h1 {
   height: 34px;
   border-color: #ffffff;
   background: #ffffff;
-  color: var(--coral-dark);
+  color: var(--aqua-dark);
 }
 
 .source-refresh .material-icon {
