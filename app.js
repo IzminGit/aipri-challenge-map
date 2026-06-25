@@ -54,9 +54,16 @@ function setupFilters() {
     appState.data.shops.flatMap((shop) => shop.events.map((event) => event.date).filter(Boolean)),
   ).sort();
 
+  if (appState.date !== "all" && !dates.includes(appState.date)) {
+    appState.date = "all";
+  }
+
   els.dateFilter.innerHTML = [
-    `<option value="all">すべて</option>`,
-    ...dates.map((date) => `<option value="${date}">${formatDate(date)}</option>`),
+    `<button class="${appState.date === "all" ? "is-active" : ""}" type="button" data-date="all">すべて</button>`,
+    ...dates.map(
+      (date) =>
+        `<button class="${appState.date === date ? "is-active" : ""}" type="button" data-date="${date}">${formatDate(date)}</button>`,
+    ),
   ].join("");
 
   els.sourceLink.href = appState.data.sourceUrl;
@@ -68,8 +75,13 @@ function bindEvents() {
     render();
   });
 
-  els.dateFilter.addEventListener("change", (event) => {
-    appState.date = event.target.value;
+  els.dateFilter.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-date]");
+    if (!button) return;
+    appState.date = button.dataset.date;
+    els.dateFilter.querySelectorAll("[data-date]").forEach((item) => {
+      item.classList.toggle("is-active", item === button);
+    });
     render();
   });
 
