@@ -649,6 +649,39 @@ button:focus-visible {
   font-size: 0.84rem;
 }
 
+.popup-events {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.popup-event {
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdf6;
+}
+
+.popup-event__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.popup-event__head .chip {
+  flex: 0 0 auto;
+}
+
+.popup-event__time {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
 @media (max-width: 1180px) {
   .controls {
     grid-template-columns: repeat(6, minmax(0, 1fr));

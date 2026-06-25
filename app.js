@@ -490,12 +490,30 @@ function markerStyle(shopId) {
 }
 
 function renderPopup(shop, events) {
-  const first = events[0];
   return `
     <button class="popup-title popup-title-button" type="button" data-popup-shop="${escapeHtml(shop.id)}">${escapeHtml(shop.name)}</button>
-    <p class="popup-meta">${events.length}大会 / ${first ? formatDate(first.date) : "日程未記載"}</p>
-    <p class="popup-meta">${escapeHtml(shop.address)}</p>
+    ${events.length ? `<ul class="popup-events">${events.map(renderPopupEvent).join("")}</ul>` : `<p class="popup-meta">開催情報がありません</p>`}
   `;
+}
+
+function renderPopupEvent(event) {
+  return `
+    <li class="popup-event">
+      <div class="popup-event__head">
+        <strong>${escapeHtml(formatDate(event.date))}</strong>
+        <span class="chip ${ageClass(event.ageLimit)}">${escapeHtml(event.ageLimit || "年齢制限未記載")}</span>
+      </div>
+      <div class="popup-event__time">${escapeHtml(popupTimeText(event))}</div>
+    </li>
+  `;
+}
+
+function popupTimeText(event) {
+  return [
+    `受付 ${event.registrationTime || "未記載"}`,
+    `抽選 ${event.lotteryTime || "未記載"}`,
+    `開催 ${event.startTime || "未記載"}`,
+  ].join(" / ");
 }
 
 function focusSelectedOnMap({ scrollDrawer = true } = {}) {
