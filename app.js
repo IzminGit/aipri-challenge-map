@@ -122,15 +122,27 @@ function bindEvents() {
     const button = event.target.closest("[data-map-shop]");
     if (!button) return;
     appState.selectedShopId = button.dataset.mapShop;
-    setView("map");
+    setView("map", { scrollToMap: true });
+  });
+
+  els.mapPanel.addEventListener("click", (event) => {
+    const popupButton = event.target.closest("[data-popup-shop]");
+    if (!popupButton || !els.mapPanel.contains(popupButton)) return;
+    selectShopOnMap(popupButton.dataset.popupShop, { scrollDrawer: true });
   });
 
   els.mapDrawer.addEventListener("click", (event) => {
-    if (event.target.closest("a")) return;
-    const target = event.target.closest("[data-map-shop], .shop-card[data-shop-id]");
+    const pinButton = event.target.closest("[data-map-shop]");
+    if (pinButton && els.mapDrawer.contains(pinButton)) {
+      selectShopOnMap(pinButton.dataset.mapShop, { scrollDrawer: false });
+      scrollMapIntoView();
+      return;
+    }
+
+    if (event.target.closest("a, button")) return;
+    const target = event.target.closest(".shop-card[data-shop-id]");
     if (!target || !els.mapDrawer.contains(target)) return;
-    const shopId = target.dataset.mapShop || target.dataset.shopId;
-    selectShopOnMap(shopId, { scrollDrawer: false });
+    selectShopOnMap(target.dataset.shopId, { scrollDrawer: false });
   });
 
   els.mapDrawer.addEventListener("keydown", (event) => {
@@ -143,7 +155,7 @@ function bindEvents() {
   });
 }
 
-function setView(view) {
+function setView(view, { scrollToMap = false } = {}) {
   appState.view = view;
   els.listPanel.hidden = view !== "list";
   els.mapPanel.hidden = view !== "map";
@@ -157,6 +169,7 @@ function setView(view) {
       if (map) {
         map.invalidateSize();
         focusSelectedOnMap();
+        if (scrollToMap) scrollMapIntoView();
       }
     }, 0);
   }
@@ -383,7 +396,7 @@ function renderMap(filtered) {
     marker.bindPopup(renderPopup(shop, events));
     marker.on("click", () => {
       appState.selectedShopId = shop.id;
-      renderMapDrawer(filtered, { scrollToSelected: true });
+      highlightSelectedShopCards();
       paintMarkers();
     });
     marker.addTo(markerLayer);
@@ -479,7 +492,7 @@ function markerStyle(shopId) {
 function renderPopup(shop, events) {
   const first = events[0];
   return `
-    <p class="popup-title">${escapeHtml(shop.name)}</p>
+    <button class="popup-title popup-title-button" type="button" data-popup-shop="${escapeHtml(shop.id)}">${escapeHtml(shop.name)}</button>
     <p class="popup-meta">${events.length}大会 / ${first ? formatDate(first.date) : "日程未記載"}</p>
     <p class="popup-meta">${escapeHtml(shop.address)}</p>
   `;
@@ -502,6 +515,10 @@ function scrollSelectedShopIntoView() {
     (card) => card.dataset.shopId === appState.selectedShopId,
   );
   selectedCard?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+
+function scrollMapIntoView() {
+  document.querySelector("#map")?.scrollIntoView({ block: "start", behavior: "smooth" });
 }
 
 function getFilteredShops() {
@@ -595,8 +612,9 @@ function locateUser() {
 
 async function refreshFromServer() {
   els.refreshBtn.disabled = true;
-  const original = els.refreshBtn.textContent;
-  els.refreshBtn.textContent = "...";
+  const originalLabel = els.refreshBtn.getAttribute("aria-label");
+  els.refreshBtn.classList.add("is-loading");
+  els.refreshBtn.setAttribute("aria-label", "最新情報を取得中");
 
   try {
     const response = await fetch("/api/refresh", { method: "POST" });
@@ -611,7 +629,8 @@ async function refreshFromServer() {
     showToast("最新取得は server.mjs から開いた場合に使えます。静的版では tools/refresh-data.mjs を実行してください");
   } finally {
     els.refreshBtn.disabled = false;
-    els.refreshBtn.textContent = original;
+    els.refreshBtn.classList.remove("is-loading");
+    els.refreshBtn.setAttribute("aria-label", originalLabel);
   }
 }
 

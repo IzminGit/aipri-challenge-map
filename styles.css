@@ -61,8 +61,8 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 22px clamp(16px, 4vw, 42px) 16px;
-  background: linear-gradient(90deg, #ff7ab6 0%, #fff47e 52%, #8debf4 100%);
-  border-bottom: 4px solid #ffffff;
+  background: var(--coral);
+  border-bottom: 4px solid var(--sun);
   box-shadow: 0 10px 24px rgba(255, 105, 171, 0.18);
 }
 
@@ -75,7 +75,7 @@ a {
   color: #ffffff;
   font-size: 0.9rem;
   font-weight: 800;
-  text-shadow: 0 2px 0 rgba(232, 69, 146, 0.45);
+  text-shadow: none;
 }
 
 h1 {
@@ -83,9 +83,7 @@ h1 {
   font-size: clamp(1.35rem, 1.1rem + 1vw, 2rem);
   line-height: 1.2;
   color: #ffffff;
-  text-shadow:
-    0 2px 0 rgba(232, 69, 146, 0.55),
-    0 4px 14px rgba(0, 127, 156, 0.24);
+  text-shadow: none;
 }
 
 .source-box {
@@ -272,9 +270,21 @@ button:focus-visible {
   font-weight: 900;
 }
 
+.material-icon {
+  display: block;
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+  pointer-events: none;
+}
+
 .icon-button[disabled] {
   cursor: progress;
   opacity: 0.6;
+}
+
+.icon-button.is-loading .material-icon {
+  animation: icon-spin 0.9s linear infinite;
 }
 
 .summary-strip {
@@ -287,6 +297,12 @@ button:focus-visible {
   font-size: 0.9rem;
   background: rgba(255, 255, 255, 0.72);
   border-bottom: 2px solid #ffdaee;
+}
+
+@keyframes icon-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .summary-strip strong {
@@ -581,6 +597,26 @@ button:focus-visible {
 .popup-title {
   margin: 0 0 6px;
   font-weight: 900;
+}
+
+.popup-title-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--coral-dark);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.35;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.popup-title-button:focus-visible {
+  border-radius: 4px;
+  outline: 3px solid rgba(0, 168, 200, 0.24);
 }
 
 .popup-meta {
