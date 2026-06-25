@@ -733,7 +733,7 @@ button:focus-visible {
   }
 
   .toolbox {
-    align-items: stretch;
+    align-items: end;
   }
 
   .view-field {
