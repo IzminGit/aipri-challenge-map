@@ -253,8 +253,12 @@ button:focus-visible {
   align-items: end;
 }
 
+.view-field {
+  flex: 0 0 140px;
+}
+
 .view-switch {
-  width: 140px;
+  width: 100%;
 }
 
 .icon-button {
@@ -712,8 +716,11 @@ button:focus-visible {
     align-items: stretch;
   }
 
-  .view-switch {
+  .view-field {
     flex: 1 1 auto;
+  }
+
+  .view-switch {
     width: auto;
   }
 
