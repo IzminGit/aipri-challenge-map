@@ -101,7 +101,7 @@ h1 {
   top: 0;
   z-index: 500;
   display: grid;
-  grid-template-columns: minmax(220px, 1.5fr) minmax(130px, 0.8fr) minmax(240px, 1.1fr) minmax(120px, 0.7fr) minmax(130px, 0.7fr) auto;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 10px;
   align-items: end;
   padding: 12px clamp(16px, 4vw, 42px);
@@ -116,8 +116,24 @@ h1 {
   min-width: 0;
 }
 
+.search-field {
+  grid-column: span 3;
+}
+
+.controls > .field-group {
+  grid-column: span 3;
+}
+
 .date-field {
-  grid-column: span 2;
+  grid-column: span 4;
+}
+
+.time-field {
+  grid-column: span 4;
+}
+
+.sort-field {
+  grid-column: span 3;
 }
 
 .field > span,
@@ -206,7 +222,17 @@ button:focus-visible {
   color: #ffffff;
 }
 
+.compact-segmented {
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(76px, 1fr);
+}
+
+.compact-segmented button {
+  padding: 0 8px;
+}
+
 .toolbox {
+  grid-column: span 2;
   display: flex;
   gap: 8px;
   align-items: end;
@@ -524,7 +550,15 @@ button:focus-visible {
 
 @media (max-width: 1180px) {
   .controls {
-    grid-template-columns: minmax(260px, 1.2fr) repeat(2, minmax(130px, 0.7fr)) minmax(240px, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .search-field,
+  .controls > .field-group,
+  .date-field,
+  .time-field,
+  .sort-field {
+    grid-column: span 3;
   }
 
   .toolbox {

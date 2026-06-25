@@ -85,13 +85,19 @@ function bindEvents() {
     render();
   });
 
-  els.timeFilter.addEventListener("change", (event) => {
-    appState.time = event.target.value;
+  els.timeFilter.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-time]");
+    if (!button) return;
+    appState.time = button.dataset.time;
+    setActiveToggle(els.timeFilter, "time", appState.time);
     render();
   });
 
-  els.sortMode.addEventListener("change", (event) => {
-    appState.sort = event.target.value;
+  els.sortMode.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-sort]");
+    if (!button) return;
+    appState.sort = button.dataset.sort;
+    setActiveToggle(els.sortMode, "sort", appState.sort);
     render();
   });
 
@@ -492,7 +498,7 @@ function locateUser() {
         lng: position.coords.longitude,
       };
       appState.sort = "distance";
-      els.sortMode.value = "distance";
+      setActiveToggle(els.sortMode, "sort", appState.sort);
       els.locateBtn.disabled = false;
       showToast("現在地を取得しました");
       render();
@@ -617,10 +623,20 @@ function describeActiveFilters() {
   if (appState.date !== "all") parts.push(formatDate(appState.date));
   if (appState.age !== "all") parts.push(appState.age);
   if (appState.time !== "all") {
-    const label = els.timeFilter.selectedOptions[0]?.textContent || "";
+    const label = getToggleLabel(els.timeFilter, "time", appState.time);
     parts.push(label);
   }
   return parts.length ? parts.join(" / ") : "条件なし";
+}
+
+function setActiveToggle(container, key, value) {
+  container.querySelectorAll(`[data-${key}]`).forEach((item) => {
+    item.classList.toggle("is-active", item.dataset[key] === value);
+  });
+}
+
+function getToggleLabel(container, key, value) {
+  return container.querySelector(`[data-${key}="${value}"]`)?.textContent || "";
 }
 
 function ageClass(age) {

@@ -44,24 +44,24 @@
           </div>
         </div>
 
-        <label class="field">
-          <span>開始</span>
-          <select id="timeFilter">
-            <option value="all">すべて</option>
-            <option value="morning">午前</option>
-            <option value="midday">12-13時台</option>
-            <option value="late">14時以降</option>
-          </select>
-        </label>
+        <div class="field field-group time-field">
+          <span>開始時間帯</span>
+          <div id="timeFilter" class="segmented compact-segmented" role="group" aria-label="開始時間帯">
+            <button class="is-active" type="button" data-time="all">すべて</button>
+            <button type="button" data-time="morning">午前</button>
+            <button type="button" data-time="midday">12-13時台</button>
+            <button type="button" data-time="late">14時以降</button>
+          </div>
+        </div>
 
-        <label class="field">
+        <div class="field field-group sort-field">
           <span>並び順</span>
-          <select id="sortMode">
-            <option value="date">日付が近い</option>
-            <option value="distance">現在地から近い</option>
-            <option value="name">店舗名</option>
-          </select>
-        </label>
+          <div id="sortMode" class="segmented compact-segmented" role="group" aria-label="並び順">
+            <button class="is-active" type="button" data-sort="date">日付</button>
+            <button type="button" data-sort="distance">距離</button>
+            <button type="button" data-sort="name">店舗名</button>
+          </div>
+        </div>
 
         <div class="toolbox">
           <div class="segmented view-switch" role="group" aria-label="表示切替">
