@@ -510,9 +510,9 @@ function renderPopupEvent(event) {
 
 function popupTimeText(event) {
   return [
-    `受付 ${event.registrationTime || "未記載"}`,
-    `抽選 ${event.lotteryTime || "未記載"}`,
-    `開催 ${event.startTime || "未記載"}`,
+    event.registrationTime || "未記載",
+    event.lotteryTime || "未記載",
+    event.startTime || "未記載",
   ].join(" / ");
 }
 
