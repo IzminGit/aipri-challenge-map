@@ -15,12 +15,19 @@
     <div class="app-shell">
       <header class="topbar">
         <div class="brand">
-          <p class="kicker">岐阜・愛知・三重版</p>
+          <p class="kicker">全国版</p>
           <h1>アイプリチャレンジマップ</h1>
         </div>
         <div class="source-box">
           <span id="sourceStamp">公式取得日時を読み込み中</span>
-          <a id="sourceLink" href="https://aipri.jp/event/search.html?event_id=9" target="_blank" rel="noopener">公式</a>
+          <div class="source-actions">
+            <a id="sourceLink" href="https://aipri.jp/event/search.html?event_id=9" target="_blank" rel="noopener">公式</a>
+            <button id="refreshBtn" class="icon-button source-refresh" type="button" title="最新情報を取得" aria-label="最新情報を取得">
+              <svg class="material-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M17.65 6.35A7.95 7.95 0 0 0 12 4a8 8 0 1 0 7.73 10h-2.08A6.004 6.004 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h8V3l-3.35 3.35Z"></path>
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -74,11 +81,6 @@
           <button id="locateBtn" class="icon-button" type="button" title="現在地を表示" aria-label="現在地を表示">
             <svg class="material-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm8.94 3A9.004 9.004 0 0 0 13 3.06V1h-2v2.06A9.004 9.004 0 0 0 3.06 11H1v2h2.06A9.004 9.004 0 0 0 11 20.94V23h2v-2.06A9.004 9.004 0 0 0 20.94 13H23v-2h-2.06ZM12 19a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"></path>
-            </svg>
-          </button>
-          <button id="refreshBtn" class="icon-button" type="button" title="最新情報を取得" aria-label="最新情報を取得">
-            <svg class="material-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path d="M17.65 6.35A7.95 7.95 0 0 0 12 4a8 8 0 1 0 7.73 10h-2.08A6.004 6.004 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h8V3l-3.35 3.35Z"></path>
             </svg>
           </button>
         </div>

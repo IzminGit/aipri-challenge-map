@@ -91,10 +91,17 @@ h1 {
   gap: 10px;
   align-items: center;
   justify-content: flex-end;
-  min-width: min(420px, 42vw);
+  min-width: min(480px, 46vw);
   color: #ffffff;
   font-size: 0.86rem;
   text-align: right;
+}
+
+.source-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+  align-items: center;
 }
 
 .source-box a {
@@ -108,6 +115,19 @@ h1 {
   color: var(--coral-dark);
   text-decoration: none;
   font-weight: 800;
+}
+
+.source-refresh {
+  width: 34px;
+  height: 34px;
+  border-color: #ffffff;
+  background: #ffffff;
+  color: var(--coral-dark);
+}
+
+.source-refresh .material-icon {
+  width: 21px;
+  height: 21px;
 }
 
 .controls {
@@ -247,7 +267,7 @@ button:focus-visible {
 }
 
 .toolbox {
-  grid-column: span 2;
+  grid-column: span 3;
   display: flex;
   gap: 8px;
   align-items: end;
