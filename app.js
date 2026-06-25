@@ -206,6 +206,9 @@ function renderList(filtered) {
 
 function renderShopCard(shop, events, compact = false) {
   const distance = getDistanceForShop(shop);
+  const prefectureChip = shop.prefecture
+    ? `<span class="chip prefecture-chip">${escapeHtml(shop.prefecture)}</span>`
+    : "";
   const ageChips = unique(events.map((event) => event.ageLimit).filter(Boolean))
     .map((age) => `<span class="chip ${ageClass(age)}">${escapeHtml(age)}</span>`)
     .join("");
@@ -223,9 +226,9 @@ function renderShopCard(shop, events, compact = false) {
           ${Number.isFinite(distance) ? `<span class="distance">${formatDistance(distance)}</span>` : ""}
         </div>
         <p class="address">${escapeHtml(shop.address)}</p>
-        <div class="chip-row">${machineChips}${ageChips}</div>
+        <div class="chip-row">${prefectureChip}${machineChips}${ageChips}</div>
       </div>
-      ${renderEventTable(events)}
+      ${renderEventTable(shop, events)}
       <div class="actions">
         <a class="action-link primary" href="${routeUrl(shop)}" target="_blank" rel="noopener">経路</a>
         <a class="action-link" href="${searchUrl(shop)}" target="_blank" rel="noopener">Googleマップ</a>
@@ -239,14 +242,14 @@ function renderShopCard(shop, events, compact = false) {
   `;
 }
 
-function renderEventTable(events) {
+function renderEventTable(shop, events) {
   return `
     <table class="event-table">
       <thead>
         <tr>
           <th>日程</th>
-          <th>年齢</th>
-          <th>開始</th>
+          <th>年齢制限</th>
+          <th>開催</th>
           <th>受付 / 抽選</th>
         </tr>
       </thead>
@@ -265,6 +268,7 @@ function renderEventTable(events) {
                   ${escapeHtml(event.registrationTime || "未記載")}
                   <div class="event-label">抽選 ${escapeHtml(event.lotteryTime || "未記載")}</div>
                   ${event.note ? `<div class="event-label">${escapeHtml(event.note)}</div>` : ""}
+                  ${renderCalendarLink(shop, event)}
                 </td>
               </tr>
             `,
@@ -273,6 +277,82 @@ function renderEventTable(events) {
       </tbody>
     </table>
   `;
+}
+
+function renderCalendarLink(shop, event) {
+  return `
+    <a class="calendar-link" href="${escapeHtml(googleCalendarUrl(shop, event))}" target="_blank" rel="noopener">
+      Googleカレンダー
+    </a>
+  `;
+}
+
+function googleCalendarUrl(shop, event) {
+  const title = `${event.label || "大会"} ${shop.name} - バルーンフェスコーデ大会`;
+  const details = [
+    appState.data.eventName,
+    `店舗: ${shop.name}`,
+    `都道府県: ${shop.prefecture || "未記載"}`,
+    `住所: ${shop.address || "未記載"}`,
+    `大会: ${event.label || "未記載"}`,
+    `日程: ${event.dateDisplay || event.date || "未記載"}`,
+    `年齢制限: ${event.ageLimit || "未記載"}`,
+    `参加受付時間: ${event.registrationTime || "未記載"}`,
+    `抽選開始時間: ${event.lotteryTime || "未記載"}`,
+    `開催時間: ${event.startTime || "未記載"}`,
+    event.note ? `備考: ${event.note}` : "",
+    `公式: ${appState.data.sourceUrl}`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  const url = new URL("https://calendar.google.com/calendar/render");
+  url.searchParams.set("action", "TEMPLATE");
+  url.searchParams.set("text", title);
+  const dates = calendarDateRange(event);
+  if (dates) url.searchParams.set("dates", dates);
+  url.searchParams.set("details", details);
+  url.searchParams.set("location", `${shop.name} ${shop.prefecture || ""}${shop.address || ""}`);
+  url.searchParams.set("ctz", "Asia/Tokyo");
+  return url.toString();
+}
+
+function calendarDateRange(event) {
+  if (!event.date) return "";
+
+  const startMinutes = firstFinite(
+    timeToMinutes(event.registrationTime),
+    timeToMinutes(event.lotteryTime),
+    timeToMinutes(event.startTime),
+  );
+
+  if (!Number.isFinite(startMinutes)) {
+    return `${compactDate(event.date)}/${compactDate(addDays(event.date, 1))}`;
+  }
+
+  const endCandidates = [
+    startMinutes + 60,
+    addMinutesIfFinite(timeToMinutes(event.startTime), 60),
+    addMinutesIfFinite(parseRangeEnd(event.registrationTime), 0),
+    addMinutesIfFinite(timeToMinutes(event.lotteryTime), 30),
+  ].filter(Number.isFinite);
+  const endMinutes = Math.max(...endCandidates);
+
+  return `${compactDateTime(event.date, startMinutes)}/${compactDateTime(event.date, endMinutes)}`;
+}
+
+function firstFinite(...values) {
+  return values.find(Number.isFinite) ?? Number.NaN;
+}
+
+function addMinutesIfFinite(value, minutes) {
+  return Number.isFinite(value) ? value + minutes : Number.NaN;
+}
+
+function parseRangeEnd(value) {
+  const match = String(value || "").match(/(\d{1,2}):(\d{2})\s*[～〜~-]\s*(\d{1,2}):(\d{2})/);
+  if (!match) return Number.NaN;
+  return Number(match[3]) * 60 + Number(match[4]);
 }
 
 function initMap() {
@@ -355,9 +435,9 @@ function renderCurrentLocation() {
 
   L.circleMarker([appState.userLocation.lat, appState.userLocation.lng], {
     radius: 9,
-    color: "#126979",
+    color: "#007f9c",
     weight: 3,
-    fillColor: "#f4b43f",
+    fillColor: "#ffe767",
     fillOpacity: 0.95,
   })
     .bindPopup("現在地")
@@ -389,9 +469,9 @@ function markerStyle(shopId) {
   const selected = shopId === appState.selectedShopId;
   return {
     radius: selected ? 11 : 8,
-    color: selected ? "#202330" : "#ffffff",
+    color: selected ? "#2d2847" : "#ffffff",
     weight: selected ? 3 : 2,
-    fillColor: selected ? "#e7655b" : "#1c8f9f",
+    fillColor: selected ? "#ff69ab" : "#00a8c8",
     fillOpacity: 0.95,
   };
 }
@@ -433,7 +513,9 @@ function getFilteredShops() {
 
       if (!query) return { shop, events: baseEvents };
 
-      const shopMatchesQuery = normalize(`${shop.name} ${shop.address} ${shop.participation}`).includes(query);
+      const shopMatchesQuery = normalize(
+        `${shop.prefecture || ""} ${shop.name} ${shop.address} ${shop.participation}`,
+      ).includes(query);
       const queryEvents = baseEvents.filter((event) => normalize(eventText(event)).includes(query));
       const events = shopMatchesQuery ? baseEvents : queryEvents;
       return events.length ? { shop, events } : null;
@@ -446,7 +528,7 @@ function getFilteredShops() {
 function eventMatches(event) {
   if (appState.date !== "all" && event.date !== appState.date) return false;
   if (appState.age !== "all" && event.ageLimit !== appState.age) return false;
-  if (!timeMatches(event.startTime)) return false;
+  if (!timeMatches(event.registrationTime || event.startTime)) return false;
   return true;
 }
 
@@ -661,6 +743,35 @@ function timeToMinutes(value) {
   const match = String(value || "").match(/(\d{1,2}):(\d{2})/);
   if (!match) return Number.NaN;
   return Number(match[1]) * 60 + Number(match[2]);
+}
+
+function compactDateTime(date, minutes) {
+  const dayOffset = Math.floor(minutes / (24 * 60));
+  const localMinutes = ((minutes % (24 * 60)) + 24 * 60) % (24 * 60);
+  const targetDate = addDays(date, dayOffset);
+  const hours = Math.floor(localMinutes / 60);
+  const mins = localMinutes % 60;
+  return `${compactDate(targetDate)}T${pad2(hours)}${pad2(mins)}00`;
+}
+
+function compactDate(date) {
+  return String(date || "").replaceAll("-", "");
+}
+
+function addDays(date, days) {
+  const [year, month, day] = String(date || "")
+    .split("-")
+    .map(Number);
+  const parsed = new Date(Date.UTC(year, month - 1, day + days));
+  return [
+    parsed.getUTCFullYear(),
+    pad2(parsed.getUTCMonth() + 1),
+    pad2(parsed.getUTCDate()),
+  ].join("-");
+}
+
+function pad2(value) {
+  return String(value).padStart(2, "0");
 }
 
 function normalize(value) {

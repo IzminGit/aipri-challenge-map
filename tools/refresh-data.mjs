@@ -4,8 +4,13 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, "..");
-const SOURCE_URL =
-  "https://aipri.jp/event/result.html?event_id%5B%5D=9&key_word=&pref_id=23&event_year=&event_month=&event_date=&shop_flag%5B%5D=1";
+const SEARCH_URL = "https://aipri.jp/event/search.html?event_id=9";
+const RESULT_URL_BASE = "https://aipri.jp/event/result.html";
+const PREFECTURES = [
+  { id: "21", name: "岐阜県" },
+  { id: "23", name: "愛知県" },
+  { id: "24", name: "三重県" },
+];
 
 const numerals = ["①", "②", "③", "④", "⑤", "⑥", "⑦", "⑧", "⑨", "⑩"];
 const entityMap = {
@@ -24,26 +29,37 @@ const addressOverrides = new Map([
   ["モーリーファンタジーワンダーシティ店", "愛知県名古屋市西区二方町40"],
   ["バンダイナムコ Cross Store 名古屋", "愛知県名古屋市西区二方町40"],
   ["モーリーファンタジー豊川開運通店", "愛知県豊川市開運通2-31"],
+  ["モーリーファンタジー土岐店", "岐阜県土岐市土岐津町土岐口1372-1"],
 ]);
 
 export async function refreshData({ log = true, writeFiles = true } = {}) {
-  const firstPage = await fetchOfficialPage(1);
-  const pageCount = getPageCount(firstPage);
-  const htmlPages = [firstPage];
+  const shops = [];
 
-  for (let page = 2; page <= pageCount; page += 1) {
-    htmlPages.push(await fetchOfficialPage(page));
+  for (const prefecture of PREFECTURES) {
+    const firstPage = await fetchOfficialPage(prefecture, 1);
+    const pageCount = getPageCount(firstPage);
+    const htmlPages = [firstPage];
+
+    for (let page = 2; page <= pageCount; page += 1) {
+      htmlPages.push(await fetchOfficialPage(prefecture, page));
+    }
+
+    const prefectureShops = htmlPages
+      .flatMap((html) => extractShopBlocks(html))
+      .map((block) => parseShop(block, prefecture, shops.length))
+      .filter((shop) => shop.name && shop.address && shop.events.length);
+
+    shops.push(...prefectureShops);
   }
 
-  const shops = htmlPages
-    .flatMap((html) => extractShopBlocks(html))
-    .map(parseShop)
-    .filter((shop) => shop.name && shop.address && shop.events.length);
+  reassignIds(shops);
 
   const data = {
     eventName: "お店でアイプリコンテスト「バルーンフェスコーデ」をゲット！",
-    prefecture: "愛知県",
-    sourceUrl: SOURCE_URL,
+    prefecture: "岐阜県・愛知県・三重県",
+    prefectures: PREFECTURES.map((prefecture) => prefecture.name),
+    sourceUrl: SEARCH_URL,
+    sourceUrls: PREFECTURES.map((prefecture) => buildResultUrl(prefecture, 1)),
     fetchedAt: new Date().toISOString(),
     shops,
   };
@@ -67,15 +83,30 @@ export async function refreshData({ log = true, writeFiles = true } = {}) {
   return data;
 }
 
-async function fetchOfficialPage(page) {
-  const response = await fetch(`${SOURCE_URL}&page=${page}`, {
+async function fetchOfficialPage(prefecture, page) {
+  const response = await fetch(buildResultUrl(prefecture, page), {
     headers: {
       "User-Agent": "CodexAipriContestMapPrototype/1.0",
       Accept: "text/html",
     },
   });
-  if (!response.ok) throw new Error(`Official page failed: ${response.status} ${response.statusText}`);
+  if (!response.ok) {
+    throw new Error(`Official page failed: ${prefecture.name} page ${page}: ${response.status} ${response.statusText}`);
+  }
   return response.text();
+}
+
+function buildResultUrl(prefecture, page) {
+  const url = new URL(RESULT_URL_BASE);
+  url.searchParams.append("event_id[]", "9");
+  url.searchParams.set("key_word", "");
+  url.searchParams.set("pref_id", prefecture.id);
+  url.searchParams.set("event_year", "");
+  url.searchParams.set("event_month", "");
+  url.searchParams.set("event_date", "");
+  url.searchParams.append("shop_flag[]", "1");
+  url.searchParams.set("page", String(page));
+  return url.toString();
 }
 
 function getPageCount(html) {
@@ -90,7 +121,7 @@ function extractShopBlocks(html) {
     .map((block) => block.split('<div class="pageLink">')[0]);
 }
 
-function parseShop(block, index) {
+function parseShop(block, prefecture, index) {
   const name = firstMatch(block, /<h3 class="ttl ttl--shopResult">([\s\S]*?)<\/h3>/);
   const address = firstMatch(block, /<p class="shopResult__address">([\s\S]*?)<\/p>/);
   const mapsSearchUrl = attrMatch(block, /<a href="([^"]*google\.com\/maps\/search[^"]*)"/);
@@ -136,12 +167,21 @@ function parseShop(block, index) {
     id: `shop-${index + 1}`,
     name,
     address,
-    prefecture: "愛知県",
+    prefecture: prefecture.name,
     machineTypes,
     participation: fields["参加方法"] ?? "",
     mapsSearchUrl,
     events,
   };
+}
+
+function reassignIds(shops) {
+  shops.forEach((shop, shopIndex) => {
+    shop.id = `shop-${shopIndex + 1}`;
+    shop.events.forEach((event, eventIndex) => {
+      event.id = `${shop.id}-event-${eventIndex + 1}`;
+    });
+  });
 }
 
 function parseDlFields(block) {
@@ -259,14 +299,14 @@ function normalizeAddress(shop) {
   const override = addressOverrides.get(shop.name);
   if (override) return override;
   const cleaned = shop.address
-    .replace(/^愛知県/, "")
+    .replace(new RegExp(`^${shop.prefecture}`), "")
     .replace(/^名古屋市中村区名古屋市中村区/, "名古屋市中村区")
     .replace(/店内$/, "")
     .replace(/\b[0-9０-９]+F\b/gi, "")
     .replace(/\s+$/, "")
     .replace(/\s+/g, " ")
     .trim();
-  return `愛知県${cleaned}`;
+  return `${shop.prefecture}${cleaned}`;
 }
 
 async function readJson(filePath, fallback) {

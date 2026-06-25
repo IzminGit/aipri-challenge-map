@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>バルーンフェスコーデ大会マップ 愛知県版</title>
+    <title>バルーンフェスコーデ大会マップ 東海版</title>
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="styles.css">
@@ -15,12 +15,12 @@
     <div class="app-shell">
       <header class="topbar">
         <div class="brand">
-          <p class="kicker">愛知県版</p>
+          <p class="kicker">岐阜・愛知・三重版</p>
           <h1>バルーンフェスコーデ大会マップ</h1>
         </div>
         <div class="source-box">
           <span id="sourceStamp">公式取得日時を読み込み中</span>
-          <a id="sourceLink" href="https://aipri.jp/event/result.html?event_id%5B%5D=9&key_word=&pref_id=23&event_year=&event_month=&event_date=&shop_flag%5B%5D=1" target="_blank" rel="noopener">公式</a>
+          <a id="sourceLink" href="https://aipri.jp/event/search.html?event_id=9" target="_blank" rel="noopener">公式</a>
         </div>
       </header>
 
@@ -36,7 +36,7 @@
         </div>
 
         <div class="field field-group">
-          <span>年齢</span>
+          <span>年齢制限</span>
           <div class="segmented" role="group" aria-label="年齢制限">
             <button class="is-active" type="button" data-age="all">すべて</button>
             <button type="button" data-age="年齢無制限">無制限</button>
@@ -45,8 +45,8 @@
         </div>
 
         <div class="field field-group time-field">
-          <span>開始時間帯</span>
-          <div id="timeFilter" class="segmented compact-segmented" role="group" aria-label="開始時間帯">
+          <span>参加受付時間帯</span>
+          <div id="timeFilter" class="segmented compact-segmented" role="group" aria-label="参加受付時間帯">
             <button class="is-active" type="button" data-time="all">すべて</button>
             <button type="button" data-time="morning">午前</button>
             <button type="button" data-time="midday">12-13時台</button>

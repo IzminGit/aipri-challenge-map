@@ -1,11 +1,263 @@
 {
   "eventName": "お店でアイプリコンテスト「バルーンフェスコーデ」をゲット！",
-  "prefecture": "愛知県",
-  "sourceUrl": "https://aipri.jp/event/result.html?event_id%5B%5D=9&key_word=&pref_id=23&event_year=&event_month=&event_date=&shop_flag%5B%5D=1",
-  "fetchedAt": "2026-06-25T11:53:15.171Z",
+  "prefecture": "岐阜県・愛知県・三重県",
+  "prefectures": [
+    "岐阜県",
+    "愛知県",
+    "三重県"
+  ],
+  "sourceUrl": "https://aipri.jp/event/search.html?event_id=9",
+  "sourceUrls": [
+    "https://aipri.jp/event/result.html?event_id%5B%5D=9&key_word=&pref_id=21&event_year=&event_month=&event_date=&shop_flag%5B%5D=1&page=1",
+    "https://aipri.jp/event/result.html?event_id%5B%5D=9&key_word=&pref_id=23&event_year=&event_month=&event_date=&shop_flag%5B%5D=1&page=1",
+    "https://aipri.jp/event/result.html?event_id%5B%5D=9&key_word=&pref_id=24&event_year=&event_month=&event_date=&shop_flag%5B%5D=1&page=1"
+  ],
+  "fetchedAt": "2026-06-25T12:53:13.340Z",
   "shops": [
     {
       "id": "shop-1",
+      "name": "GiGO マーゴ関",
+      "address": "関市倉知516",
+      "prefecture": "岐阜県",
+      "machineTypes": [
+        "おねがいアイプリ",
+        "アイプリバース"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E9%96%A2%E5%B8%82%E5%80%89%E7%9F%A5516%3CBR%3E",
+      "events": [
+        {
+          "id": "shop-1-event-1",
+          "label": "大会①",
+          "date": "2026-07-11",
+          "dateDisplay": "26年7月11日（土）",
+          "ageLimit": "中学生以下",
+          "startTime": "13:30",
+          "registrationTime": "12:00～13:00",
+          "lotteryTime": "13:00",
+          "note": ""
+        },
+        {
+          "id": "shop-1-event-2",
+          "label": "大会②",
+          "date": "2026-07-20",
+          "dateDisplay": "26年7月20日（月祝）",
+          "ageLimit": "年齢無制限",
+          "startTime": "13:30",
+          "registrationTime": "12:00～13:00",
+          "lotteryTime": "13:00",
+          "note": ""
+        }
+      ],
+      "location": {
+        "lat": 35.477791,
+        "lng": 136.900055,
+        "geocodeLabel": "岐阜県関市倉知５１６番地",
+        "geocodeQuery": "岐阜県関市倉知516"
+      }
+    },
+    {
+      "id": "shop-2",
+      "name": "namco イオンモール各務原インター店",
+      "address": "各務原市那加萱場町3-8 イオンモール各務原店2F",
+      "prefecture": "岐阜県",
+      "machineTypes": [
+        "おねがいアイプリ",
+        "アイプリバース"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%84%E5%8B%99%E5%8E%9F%E5%B8%82%E9%82%A3%E5%8A%A0%E8%90%B1%E5%A0%B4%E7%94%BA3-8+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E5%90%84%E5%8B%99%E5%8E%9F%E5%BA%972F",
+      "events": [
+        {
+          "id": "shop-2-event-1",
+          "label": "大会①",
+          "date": "2026-07-12",
+          "dateDisplay": "26年7月12日（日）",
+          "ageLimit": "年齢無制限",
+          "startTime": "抽選が終わり次第",
+          "registrationTime": "9:00～10:00",
+          "lotteryTime": "10:00",
+          "note": ""
+        },
+        {
+          "id": "shop-2-event-2",
+          "label": "大会②",
+          "date": "2026-07-12",
+          "dateDisplay": "26年7月12日（日）",
+          "ageLimit": "中学生以下",
+          "startTime": "抽選が終わり次第",
+          "registrationTime": "13:30～14:00",
+          "lotteryTime": "14:00",
+          "note": ""
+        }
+      ],
+      "location": {
+        "lat": 35.392418,
+        "lng": 136.823975,
+        "geocodeLabel": "岐阜県各務原市那加萱場町三丁目８番地",
+        "geocodeQuery": "岐阜県各務原市那加萱場町3-8 イオンモール各務原店"
+      }
+    },
+    {
+      "id": "shop-3",
+      "name": "namco イオンモール大垣店",
+      "address": "大垣市外野2丁目100番地 イオンモール大垣店2F",
+      "prefecture": "岐阜県",
+      "machineTypes": [
+        "おねがいアイプリ",
+        "アイプリバース"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E5%A4%A7%E5%9E%A3%E5%B8%82%E5%A4%96%E9%87%8E2%E4%B8%81%E7%9B%AE100%E7%95%AA%E5%9C%B0+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E5%A4%A7%E5%9E%A3%E5%BA%972F%3CBR%3E",
+      "events": [
+        {
+          "id": "shop-3-event-1",
+          "label": "大会①",
+          "date": "2026-07-11",
+          "dateDisplay": "26年7月11日（土）",
+          "ageLimit": "中学生以下",
+          "startTime": "13:00",
+          "registrationTime": "11:00～12:00",
+          "lotteryTime": "12:00",
+          "note": ""
+        },
+        {
+          "id": "shop-3-event-2",
+          "label": "大会②",
+          "date": "2026-07-12",
+          "dateDisplay": "26年7月12日（日）",
+          "ageLimit": "年齢無制限",
+          "startTime": "13:00",
+          "registrationTime": "11:00～12:00",
+          "lotteryTime": "12:00",
+          "note": ""
+        }
+      ],
+      "location": {
+        "lat": 35.336967,
+        "lng": 136.613708,
+        "geocodeLabel": "岐阜県大垣市外野二丁目１００番地",
+        "geocodeQuery": "岐阜県大垣市外野2丁目100番地 イオンモール大垣店"
+      }
+    },
+    {
+      "id": "shop-4",
+      "name": "モーリーファンタジーf 岐阜店",
+      "address": "岐阜市正木中1丁目2-1 3階 マーサ21 北館 イオン岐阜店",
+      "prefecture": "岐阜県",
+      "machineTypes": [
+        "おねがいアイプリ",
+        "アイプリバース",
+        "アイプリステーション"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E5%B2%90%E9%98%9C%E5%B8%82%E6%AD%A3%E6%9C%A8%E4%B8%AD1%E4%B8%81%E7%9B%AE2-1+3%E9%9A%8E+%E3%83%9E%E3%83%BC%E3%82%B521+%E5%8C%97%E9%A4%A8+%E3%82%A4%E3%82%AA%E3%83%B3%E5%B2%90%E9%98%9C%E5%BA%97",
+      "events": [
+        {
+          "id": "shop-4-event-1",
+          "label": "大会①",
+          "date": "2026-07-11",
+          "dateDisplay": "26年7月11日（土）",
+          "ageLimit": "中学生以下",
+          "startTime": "11:30",
+          "registrationTime": "10:00～11:00",
+          "lotteryTime": "11:00",
+          "note": "抽選が終了次第開始"
+        },
+        {
+          "id": "shop-4-event-2",
+          "label": "大会②",
+          "date": "2026-07-12",
+          "dateDisplay": "26年7月12日（日）",
+          "ageLimit": "年齢無制限",
+          "startTime": "11:30",
+          "registrationTime": "10:00～11:00",
+          "lotteryTime": "11:00",
+          "note": "抽選が終了次第開始"
+        }
+      ],
+      "location": {
+        "lat": 35.446793,
+        "lng": 136.745743,
+        "geocodeLabel": "岐阜県岐阜市正木中一丁目２番１号",
+        "geocodeQuery": "岐阜県岐阜市正木中1丁目2-1 3階 マーサ21 北館 イオン岐阜店"
+      }
+    },
+    {
+      "id": "shop-5",
+      "name": "モーリーファンタジー土岐店",
+      "address": "土佐市土岐津町土岐口1372-1 イオンモール土岐2F",
+      "prefecture": "岐阜県",
+      "machineTypes": [
+        "おねがいアイプリ",
+        "アイプリバース"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E5%9C%9F%E4%BD%90%E5%B8%82%E5%9C%9F%E5%B2%90%E6%B4%A5%E7%94%BA%E5%9C%9F%E5%B2%90%E5%8F%A31372-1+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E5%9C%9F%E5%B2%902F",
+      "events": [
+        {
+          "id": "shop-5-event-1",
+          "label": "大会",
+          "date": "2026-07-11",
+          "dateDisplay": "26年7月11日（土）",
+          "ageLimit": "中学生以下",
+          "startTime": "11:00",
+          "registrationTime": "10:00～10:30",
+          "lotteryTime": "10:30",
+          "note": "抽選が終わり次第イベント開始"
+        }
+      ],
+      "location": {
+        "lat": 35.348499,
+        "lng": 137.153839,
+        "geocodeLabel": "岐阜県土岐市土岐津町土岐口１３７２番地",
+        "geocodeQuery": "岐阜県土岐市土岐津町土岐口1372-1"
+      }
+    },
+    {
+      "id": "shop-6",
+      "name": "GiGOラスパ御嵩",
+      "address": "岐阜県可児郡御嵩町上恵土1052-1　ﾗｽﾊﾟ御嵩店 2F",
+      "prefecture": "岐阜県",
+      "machineTypes": [
+        "おねがいアイプリ",
+        "アイプリバース"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E5%B2%90%E9%98%9C%E7%9C%8C%E5%8F%AF%E5%85%90%E9%83%A1%E5%BE%A1%E5%B5%A9%E7%94%BA%E4%B8%8A%E6%81%B5%E5%9C%9F1052-1%E3%80%80%EF%BE%97%EF%BD%BD%EF%BE%8A%EF%BE%9F%E5%BE%A1%E5%B5%A9%E5%BA%97+2F",
+      "events": [
+        {
+          "id": "shop-6-event-1",
+          "label": "大会①",
+          "date": "2026-07-11",
+          "dateDisplay": "26年7月11日（土）",
+          "ageLimit": "中学生以下",
+          "startTime": "11:00",
+          "registrationTime": "10:00～10:50",
+          "lotteryTime": "10:50",
+          "note": ""
+        },
+        {
+          "id": "shop-6-event-2",
+          "label": "大会②",
+          "date": "2026-07-12",
+          "dateDisplay": "26年7月12日（日）",
+          "ageLimit": "年齢無制限",
+          "startTime": "11:00",
+          "registrationTime": "10:00～10:50",
+          "lotteryTime": "10:50",
+          "note": ""
+        }
+      ],
+      "location": {
+        "lat": 35.438972,
+        "lng": 137.076828,
+        "geocodeLabel": "岐阜県御嵩町上恵土",
+        "geocodeQuery": "岐阜県可児郡御嵩町上恵土1052-1 ﾗｽﾊﾟ御嵩店"
+      }
+    },
+    {
+      "id": "shop-7",
       "name": "GiGO イオンタウン名西",
       "address": "名古屋市香呑町6-49-1",
       "prefecture": "愛知県",
@@ -17,7 +269,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E9%A6%99%E5%91%91%E7%94%BA6-49-1",
       "events": [
         {
-          "id": "shop-1-event-1",
+          "id": "shop-7-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -28,7 +280,7 @@
           "note": ""
         },
         {
-          "id": "shop-1-event-2",
+          "id": "shop-7-event-2",
           "label": "大会②",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -47,7 +299,7 @@
       }
     },
     {
-      "id": "shop-2",
+      "id": "shop-8",
       "name": "namco アピタ稲沢店",
       "address": "稲沢市天池五反田町1番地 アピタ稲沢店",
       "prefecture": "愛知県",
@@ -59,7 +311,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E7%A8%B2%E6%B2%A2%E5%B8%82%E5%A4%A9%E6%B1%A0%E4%BA%94%E5%8F%8D%E7%94%B0%E7%94%BA1%E7%95%AA%E5%9C%B0+%E3%82%A2%E3%83%94%E3%82%BF%E7%A8%B2%E6%B2%A2%E5%BA%97",
       "events": [
         {
-          "id": "shop-2-event-1",
+          "id": "shop-8-event-1",
           "label": "大会",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -78,7 +330,7 @@
       }
     },
     {
-      "id": "shop-3",
+      "id": "shop-9",
       "name": "namco イオンモール大高店",
       "address": "名古屋市緑区南大高二丁目450 イオンモール大高3F",
       "prefecture": "愛知県",
@@ -91,7 +343,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%B7%91%E5%8C%BA%E5%8D%97%E5%A4%A7%E9%AB%98%E4%BA%8C%E4%B8%81%E7%9B%AE450+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E5%A4%A7%E9%AB%983F",
       "events": [
         {
-          "id": "shop-3-event-1",
+          "id": "shop-9-event-1",
           "label": "大会①",
           "date": "2026-07-19",
           "dateDisplay": "26年7月19日（日）",
@@ -102,7 +354,7 @@
           "note": ""
         },
         {
-          "id": "shop-3-event-2",
+          "id": "shop-9-event-2",
           "label": "大会②",
           "date": "2026-07-20",
           "dateDisplay": "26年7月20日（月祝）",
@@ -121,7 +373,7 @@
       }
     },
     {
-      "id": "shop-4",
+      "id": "shop-10",
       "name": "ｎａｍｃｏ太鼓の達人毎日おまつりだドン イオンモール長久手店",
       "address": "長久手市勝入塚501 イオンモール長久手4F",
       "prefecture": "愛知県",
@@ -133,7 +385,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E9%95%B7%E4%B9%85%E6%89%8B%E5%B8%82%E5%8B%9D%E5%85%A5%E5%A1%9A501+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E9%95%B7%E4%B9%85%E6%89%8B4F",
       "events": [
         {
-          "id": "shop-4-event-1",
+          "id": "shop-10-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -144,7 +396,7 @@
           "note": ""
         },
         {
-          "id": "shop-4-event-2",
+          "id": "shop-10-event-2",
           "label": "大会②",
           "date": "2026-07-25",
           "dateDisplay": "26年7月25日（土）",
@@ -163,7 +415,7 @@
       }
     },
     {
-      "id": "shop-5",
+      "id": "shop-11",
       "name": "NICOPA なるぱーく店",
       "address": "名古屋市緑区浦里三丁目232なるぱーく2F",
       "prefecture": "愛知県",
@@ -175,7 +427,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%B7%91%E5%8C%BA%E6%B5%A6%E9%87%8C%E4%B8%89%E4%B8%81%E7%9B%AE232%E3%81%AA%E3%82%8B%E3%81%B1%E3%83%BC%E3%81%8F2F",
       "events": [
         {
-          "id": "shop-5-event-1",
+          "id": "shop-11-event-1",
           "label": "大会",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -194,7 +446,7 @@
       }
     },
     {
-      "id": "shop-6",
+      "id": "shop-12",
       "name": "GiGO 豊橋飯村",
       "address": "豊橋市飯村町字西山25-121",
       "prefecture": "愛知県",
@@ -206,7 +458,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E8%B1%8A%E6%A9%8B%E5%B8%82%E9%A3%AF%E6%9D%91%E7%94%BA%E5%AD%97%E8%A5%BF%E5%B1%B125-121",
       "events": [
         {
-          "id": "shop-6-event-1",
+          "id": "shop-12-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -217,7 +469,7 @@
           "note": ""
         },
         {
-          "id": "shop-6-event-2",
+          "id": "shop-12-event-2",
           "label": "大会②",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -228,7 +480,7 @@
           "note": ""
         },
         {
-          "id": "shop-6-event-3",
+          "id": "shop-12-event-3",
           "label": "大会③",
           "date": "2026-07-25",
           "dateDisplay": "26年7月25日（土）",
@@ -247,7 +499,7 @@
       }
     },
     {
-      "id": "shop-7",
+      "id": "shop-13",
       "name": "アズパークファミリータウン",
       "address": "名古屋市中川区新家1丁目2421番地 アズパークSC2F",
       "prefecture": "愛知県",
@@ -259,7 +511,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E5%B7%9D%E5%8C%BA%E6%96%B0%E5%AE%B61%E4%B8%81%E7%9B%AE2421%E7%95%AA%E5%9C%B0+%E3%82%A2%E3%82%BA%E3%83%91%E3%83%BC%E3%82%AFSC2F",
       "events": [
         {
-          "id": "shop-7-event-1",
+          "id": "shop-13-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -270,7 +522,7 @@
           "note": ""
         },
         {
-          "id": "shop-7-event-2",
+          "id": "shop-13-event-2",
           "label": "大会②",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -289,7 +541,7 @@
       }
     },
     {
-      "id": "shop-8",
+      "id": "shop-14",
       "name": "アニメガ×ソフマップ名古屋駅西店",
       "address": "名古屋市中村区名古屋市中村区椿町6-9 ビックカメラ 名古屋駅西店店内",
       "prefecture": "愛知県",
@@ -301,7 +553,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E6%A4%BF%E7%94%BA6-9+%E3%83%93%E3%83%83%E3%82%AF%E3%82%AB%E3%83%A1%E3%83%A9+%E5%90%8D%E5%8F%A4%E5%B1%8B%E9%A7%85%E8%A5%BF%E5%BA%97%E5%BA%97%E5%86%85",
       "events": [
         {
-          "id": "shop-8-event-1",
+          "id": "shop-14-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -312,7 +564,7 @@
           "note": "参加希望人数によって、抽選開始時間・開催時間が前後する場合がございます。"
         },
         {
-          "id": "shop-8-event-2",
+          "id": "shop-14-event-2",
           "label": "大会②",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -331,7 +583,7 @@
       }
     },
     {
-      "id": "shop-9",
+      "id": "shop-15",
       "name": "NICOPA 新守山店",
       "address": "名古屋市守山区新守山2830番地 アピタパワー新守山店 2F",
       "prefecture": "愛知県",
@@ -343,7 +595,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%AE%88%E5%B1%B1%E5%8C%BA%E6%96%B0%E5%AE%88%E5%B1%B12830%E7%95%AA%E5%9C%B0+%E3%82%A2%E3%83%94%E3%82%BF%E3%83%91%E3%83%AF%E3%83%BC%E6%96%B0%E5%AE%88%E5%B1%B1%E5%BA%97+2F",
       "events": [
         {
-          "id": "shop-9-event-1",
+          "id": "shop-15-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -354,7 +606,7 @@
           "note": ""
         },
         {
-          "id": "shop-9-event-2",
+          "id": "shop-15-event-2",
           "label": "大会②",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -373,7 +625,7 @@
       }
     },
     {
-      "id": "shop-10",
+      "id": "shop-16",
       "name": "NICOPAコムタウン",
       "address": "岡崎市上六名町宮前1 コムタウン1階",
       "prefecture": "愛知県",
@@ -385,7 +637,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%B2%A1%E5%B4%8E%E5%B8%82%E4%B8%8A%E5%85%AD%E5%90%8D%E7%94%BA%E5%AE%AE%E5%89%8D1+%E3%82%B3%E3%83%A0%E3%82%BF%E3%82%A6%E3%83%B31%E9%9A%8E",
       "events": [
         {
-          "id": "shop-10-event-1",
+          "id": "shop-16-event-1",
           "label": "大会①",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -396,7 +648,7 @@
           "note": "抽選の有無にかかわらず準備ができ次第の開始となります。"
         },
         {
-          "id": "shop-10-event-2",
+          "id": "shop-16-event-2",
           "label": "大会②",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -415,7 +667,7 @@
       }
     },
     {
-      "id": "shop-11",
+      "id": "shop-17",
       "name": "エディオン 豊田本店",
       "address": "豊田市三軒町8-55",
       "prefecture": "愛知県",
@@ -426,7 +678,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E8%B1%8A%E7%94%B0%E5%B8%82%E4%B8%89%E8%BB%92%E7%94%BA8-55+",
       "events": [
         {
-          "id": "shop-11-event-1",
+          "id": "shop-17-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -437,7 +689,7 @@
           "note": ""
         },
         {
-          "id": "shop-11-event-2",
+          "id": "shop-17-event-2",
           "label": "大会②",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -456,7 +708,7 @@
       }
     },
     {
-      "id": "shop-12",
+      "id": "shop-18",
       "name": "エディオン豊川店",
       "address": "豊川市正岡町西深田345-1",
       "prefecture": "愛知県",
@@ -467,7 +719,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E8%B1%8A%E5%B7%9D%E5%B8%82%E6%AD%A3%E5%B2%A1%E7%94%BA%E8%A5%BF%E6%B7%B1%E7%94%B0345-1",
       "events": [
         {
-          "id": "shop-12-event-1",
+          "id": "shop-18-event-1",
           "label": "大会①",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -478,7 +730,7 @@
           "note": ""
         },
         {
-          "id": "shop-12-event-2",
+          "id": "shop-18-event-2",
           "label": "大会②",
           "date": "2026-07-19",
           "dateDisplay": "26年7月19日（日）",
@@ -497,7 +749,7 @@
       }
     },
     {
-      "id": "shop-13",
+      "id": "shop-19",
       "name": "カラフルパーク 有松店",
       "address": "名古屋市緑区鳴海町有松裏200番地 イオンタウン有松1F",
       "prefecture": "愛知県",
@@ -509,7 +761,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E7%B7%91%E5%8C%BA%E9%B3%B4%E6%B5%B7%E7%94%BA%E6%9C%89%E6%9D%BE%E8%A3%8F200%E7%95%AA%E5%9C%B0+%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%BF%E3%82%A6%E3%83%B3%E6%9C%89%E6%9D%BE1F",
       "events": [
         {
-          "id": "shop-13-event-1",
+          "id": "shop-19-event-1",
           "label": "大会",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -528,7 +780,7 @@
       }
     },
     {
-      "id": "shop-14",
+      "id": "shop-20",
       "name": "タイトーステーション 名古屋名駅店",
       "address": "名古屋市中村区名駅4丁目10-22",
       "prefecture": "愛知県",
@@ -540,7 +792,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E4%B8%AD%E6%9D%91%E5%8C%BA%E5%90%8D%E9%A7%854%E4%B8%81%E7%9B%AE10-22",
       "events": [
         {
-          "id": "shop-14-event-1",
+          "id": "shop-20-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -551,7 +803,7 @@
           "note": ""
         },
         {
-          "id": "shop-14-event-2",
+          "id": "shop-20-event-2",
           "label": "大会②",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -562,7 +814,7 @@
           "note": ""
         },
         {
-          "id": "shop-14-event-3",
+          "id": "shop-20-event-3",
           "label": "大会③",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -573,7 +825,7 @@
           "note": ""
         },
         {
-          "id": "shop-14-event-4",
+          "id": "shop-20-event-4",
           "label": "大会④",
           "date": "2026-07-19",
           "dateDisplay": "26年7月19日（日）",
@@ -592,7 +844,7 @@
       }
     },
     {
-      "id": "shop-15",
+      "id": "shop-21",
       "name": "モーリーファンタジー t-FACE店",
       "address": "豊田市西町6-85-1 t-FACE A館8F",
       "prefecture": "愛知県",
@@ -604,7 +856,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E8%B1%8A%E7%94%B0%E5%B8%82%E8%A5%BF%E7%94%BA6-85-1++t-FACE+A%E9%A4%A88F",
       "events": [
         {
-          "id": "shop-15-event-1",
+          "id": "shop-21-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -615,7 +867,7 @@
           "note": ""
         },
         {
-          "id": "shop-15-event-2",
+          "id": "shop-21-event-2",
           "label": "大会②",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -634,7 +886,7 @@
       }
     },
     {
-      "id": "shop-16",
+      "id": "shop-22",
       "name": "モーリーファンタジービバホーム一宮店",
       "address": "一宮市羽衣2-5-8",
       "prefecture": "愛知県",
@@ -646,7 +898,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E4%B8%80%E5%AE%AE%E5%B8%82%E7%BE%BD%E8%A1%A32-5-8+",
       "events": [
         {
-          "id": "shop-16-event-1",
+          "id": "shop-22-event-1",
           "label": "大会①",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -657,7 +909,7 @@
           "note": ""
         },
         {
-          "id": "shop-16-event-2",
+          "id": "shop-22-event-2",
           "label": "大会②",
           "date": "2026-07-25",
           "dateDisplay": "26年7月25日（土）",
@@ -676,7 +928,7 @@
       }
     },
     {
-      "id": "shop-17",
+      "id": "shop-23",
       "name": "モーリーファンタジーワンダーシティ店",
       "address": "名古屋市西区二方町40 イオンスタイル3F",
       "prefecture": "愛知県",
@@ -689,7 +941,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E8%A5%BF%E5%8C%BA%E4%BA%8C%E6%96%B9%E7%94%BA40+%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB3F",
       "events": [
         {
-          "id": "shop-17-event-1",
+          "id": "shop-23-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -700,7 +952,7 @@
           "note": "抽選が終わり次第イベント開始"
         },
         {
-          "id": "shop-17-event-2",
+          "id": "shop-23-event-2",
           "label": "大会②",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -719,7 +971,7 @@
       }
     },
     {
-      "id": "shop-18",
+      "id": "shop-24",
       "name": "モーリーファンタジー新豊川店",
       "address": "豊川市白鳥町兎足1-16 イオンモール豊川店3F",
       "prefecture": "愛知県",
@@ -731,7 +983,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E8%B1%8A%E5%B7%9D%E5%B8%82%E7%99%BD%E9%B3%A5%E7%94%BA%E5%85%8E%E8%B6%B31-16+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E8%B1%8A%E5%B7%9D%E5%BA%973F",
       "events": [
         {
-          "id": "shop-18-event-1",
+          "id": "shop-24-event-1",
           "label": "大会①",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -742,7 +994,7 @@
           "note": "抽選が終わり次第イベント開始"
         },
         {
-          "id": "shop-18-event-2",
+          "id": "shop-24-event-2",
           "label": "大会②",
           "date": "2026-07-19",
           "dateDisplay": "26年7月19日（日）",
@@ -761,7 +1013,7 @@
       }
     },
     {
-      "id": "shop-19",
+      "id": "shop-25",
       "name": "西友岡崎店",
       "address": "岡崎市戸崎町越舞2-1 西友岡崎店2F",
       "prefecture": "愛知県",
@@ -773,7 +1025,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%B2%A1%E5%B4%8E%E5%B8%82%E6%88%B8%E5%B4%8E%E7%94%BA%E8%B6%8A%E8%88%9E2-1+%E8%A5%BF%E5%8F%8B%E5%B2%A1%E5%B4%8E%E5%BA%972F%3CBR%3E",
       "events": [
         {
-          "id": "shop-19-event-1",
+          "id": "shop-25-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -784,7 +1036,7 @@
           "note": ""
         },
         {
-          "id": "shop-19-event-2",
+          "id": "shop-25-event-2",
           "label": "大会②",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -803,7 +1055,7 @@
       }
     },
     {
-      "id": "shop-20",
+      "id": "shop-26",
       "name": "モーリーファンタジー豊川開運通店",
       "address": "豊川市開運通り2-31 イオン",
       "prefecture": "愛知県",
@@ -815,7 +1067,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E8%B1%8A%E5%B7%9D%E5%B8%82%E9%96%8B%E9%81%8B%E9%80%9A%E3%82%8A2-31+%E3%82%A4%E3%82%AA%E3%83%B3",
       "events": [
         {
-          "id": "shop-20-event-1",
+          "id": "shop-26-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -826,7 +1078,7 @@
           "note": "抽選終了次第、大会開始"
         },
         {
-          "id": "shop-20-event-2",
+          "id": "shop-26-event-2",
           "label": "大会②",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -845,7 +1097,7 @@
       }
     },
     {
-      "id": "shop-21",
+      "id": "shop-27",
       "name": "バンダイナムコ Cross Store 名古屋",
       "address": "名古屋市西区二方町40番地 mozoワンダーシティ4階4053区画",
       "prefecture": "愛知県",
@@ -857,7 +1109,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E8%A5%BF%E5%8C%BA%E4%BA%8C%E6%96%B9%E7%94%BA40%E7%95%AA%E5%9C%B0+mozo%E3%83%AF%E3%83%B3%E3%83%80%E3%83%BC%E3%82%B7%E3%83%86%E3%82%A34%E9%9A%8E4053%E5%8C%BA%E7%94%BB",
       "events": [
         {
-          "id": "shop-21-event-1",
+          "id": "shop-27-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -868,7 +1120,7 @@
           "note": ""
         },
         {
-          "id": "shop-21-event-2",
+          "id": "shop-27-event-2",
           "label": "大会②",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -887,7 +1139,7 @@
       }
     },
     {
-      "id": "shop-22",
+      "id": "shop-28",
       "name": "GiGO北岡崎",
       "address": "岡崎市錦町2番地4",
       "prefecture": "愛知県",
@@ -898,7 +1150,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E5%B2%A1%E5%B4%8E%E5%B8%82%E9%8C%A6%E7%94%BA2%E7%95%AA%E5%9C%B04",
       "events": [
         {
-          "id": "shop-22-event-1",
+          "id": "shop-28-event-1",
           "label": "大会①",
           "date": "2026-07-11",
           "dateDisplay": "26年7月11日（土）",
@@ -909,7 +1161,7 @@
           "note": "3Fカウンターにて受付"
         },
         {
-          "id": "shop-22-event-2",
+          "id": "shop-28-event-2",
           "label": "大会②",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -928,7 +1180,7 @@
       }
     },
     {
-      "id": "shop-23",
+      "id": "shop-29",
       "name": "GiGO岡崎",
       "address": "愛知県岡崎市上地3-50-4",
       "prefecture": "愛知県",
@@ -939,7 +1191,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%B2%A1%E5%B4%8E%E5%B8%82%E4%B8%8A%E5%9C%B03-50-4%3CBR%3E",
       "events": [
         {
-          "id": "shop-23-event-1",
+          "id": "shop-29-event-1",
           "label": "大会①",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -950,7 +1202,7 @@
           "note": ""
         },
         {
-          "id": "shop-23-event-2",
+          "id": "shop-29-event-2",
           "label": "大会②",
           "date": "2026-07-19",
           "dateDisplay": "26年7月19日（日）",
@@ -961,7 +1213,7 @@
           "note": ""
         },
         {
-          "id": "shop-23-event-3",
+          "id": "shop-29-event-3",
           "label": "大会③",
           "date": "2026-07-26",
           "dateDisplay": "26年7月26日（日）",
@@ -980,7 +1232,7 @@
       }
     },
     {
-      "id": "shop-24",
+      "id": "shop-30",
       "name": "NICOPA & nico ground 岡崎",
       "address": "愛知県岡崎市上和田町南天白5-1 岡崎エルエルタウン 2F",
       "prefecture": "愛知県",
@@ -991,7 +1243,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%B2%A1%E5%B4%8E%E5%B8%82%E4%B8%8A%E5%92%8C%E7%94%B0%E7%94%BA%E5%8D%97%E5%A4%A9%E7%99%BD5-1+%E5%B2%A1%E5%B4%8E%E3%82%A8%E3%83%AB%E3%82%A8%E3%83%AB%E3%82%BF%E3%82%A6%E3%83%B3+2F%3CBR%3E",
       "events": [
         {
-          "id": "shop-24-event-1",
+          "id": "shop-30-event-1",
           "label": "大会",
           "date": "2026-07-12",
           "dateDisplay": "26年7月12日（日）",
@@ -1010,7 +1262,7 @@
       }
     },
     {
-      "id": "shop-25",
+      "id": "shop-31",
       "name": "カラフルパーク & nico ground 千種",
       "address": "愛知県名古屋市千種区千種2丁目16番地13号 イオンタウン千種 2F",
       "prefecture": "愛知県",
@@ -1021,7 +1273,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%8D%83%E7%A8%AE%E5%8C%BA%E5%8D%83%E7%A8%AE2%E4%B8%81%E7%9B%AE16%E7%95%AA%E5%9C%B013%E5%8F%B7+%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%BF%E3%82%A6%E3%83%B3%E5%8D%83%E7%A8%AE+2F%3CBR%3E",
       "events": [
         {
-          "id": "shop-25-event-1",
+          "id": "shop-31-event-1",
           "label": "大会",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -1040,7 +1292,7 @@
       }
     },
     {
-      "id": "shop-26",
+      "id": "shop-32",
       "name": "カラフルパーク 名古屋南",
       "address": "愛知県名古屋市南区豊田四丁目9番47号 アピタ名古屋南店 3F",
       "prefecture": "愛知県",
@@ -1051,7 +1303,7 @@
       "mapsSearchUrl": "https://www.google.com/maps/search/%E6%84%9B%E7%9F%A5%E7%9C%8C%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%B8%82%E5%8D%97%E5%8C%BA%E8%B1%8A%E7%94%B0%E5%9B%9B%E4%B8%81%E7%9B%AE9%E7%95%AA47%E5%8F%B7+%E3%82%A2%E3%83%94%E3%82%BF%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%8D%97%E5%BA%97+3F%3CBR%3E",
       "events": [
         {
-          "id": "shop-26-event-1",
+          "id": "shop-32-event-1",
           "label": "大会①",
           "date": "2026-07-18",
           "dateDisplay": "26年7月18日（土）",
@@ -1062,7 +1314,7 @@
           "note": ""
         },
         {
-          "id": "shop-26-event-2",
+          "id": "shop-32-event-2",
           "label": "大会②",
           "date": "2026-07-19",
           "dateDisplay": "26年7月19日（日）",
@@ -1079,7 +1331,175 @@
         "geocodeLabel": "愛知県名古屋市南区豊田四丁目９番４７号",
         "geocodeQuery": "愛知県名古屋市南区豊田四丁目9番47号 アピタ名古屋南店"
       }
+    },
+    {
+      "id": "shop-33",
+      "name": "GiGO 久居",
+      "address": "津市久居明神町字風早2534-1",
+      "prefecture": "三重県",
+      "machineTypes": [
+        "おねがいアイプリ",
+        "アイプリバース"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E6%B4%A5%E5%B8%82%E4%B9%85%E5%B1%85%E6%98%8E%E7%A5%9E%E7%94%BA%E5%AD%97%E9%A2%A8%E6%97%A92534-1",
+      "events": [
+        {
+          "id": "shop-33-event-1",
+          "label": "大会①",
+          "date": "2026-07-11",
+          "dateDisplay": "26年7月11日（土）",
+          "ageLimit": "中学生以下",
+          "startTime": "13:00",
+          "registrationTime": "12:00～12:45",
+          "lotteryTime": "12:45",
+          "note": ""
+        },
+        {
+          "id": "shop-33-event-2",
+          "label": "大会②",
+          "date": "2026-07-12",
+          "dateDisplay": "26年7月12日（日）",
+          "ageLimit": "年齢無制限",
+          "startTime": "13:00",
+          "registrationTime": "12:00～12:45",
+          "lotteryTime": "12:45",
+          "note": ""
+        },
+        {
+          "id": "shop-33-event-3",
+          "label": "大会③",
+          "date": "2026-07-25",
+          "dateDisplay": "26年7月25日（土）",
+          "ageLimit": "中学生以下",
+          "startTime": "13:00",
+          "registrationTime": "12:00～12:45",
+          "lotteryTime": "12:45",
+          "note": ""
+        },
+        {
+          "id": "shop-33-event-4",
+          "label": "大会④",
+          "date": "2026-07-26",
+          "dateDisplay": "26年7月26日（日）",
+          "ageLimit": "年齢無制限",
+          "startTime": "13:00",
+          "registrationTime": "12:00～12:45",
+          "lotteryTime": "12:45",
+          "note": ""
+        }
+      ],
+      "location": {
+        "lat": 34.684696,
+        "lng": 136.462875,
+        "geocodeLabel": "三重県津市久居明神町風早２５３４番地",
+        "geocodeQuery": "三重県津市久居明神町字風早2534-1"
+      }
+    },
+    {
+      "id": "shop-34",
+      "name": "NICOPA 四日市北店",
+      "address": "四日市市富州原町2-40 イオンモール四日市北2F",
+      "prefecture": "三重県",
+      "machineTypes": [
+        "おねがいアイプリ",
+        "アイプリバース"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E5%9B%9B%E6%97%A5%E5%B8%82%E5%B8%82%E5%AF%8C%E5%B7%9E%E5%8E%9F%E7%94%BA2-40+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E5%9B%9B%E6%97%A5%E5%B8%82%E5%8C%972F",
+      "events": [
+        {
+          "id": "shop-34-event-1",
+          "label": "大会①",
+          "date": "2026-07-11",
+          "dateDisplay": "26年7月11日(土）",
+          "ageLimit": "中学生以下",
+          "startTime": "11:00",
+          "registrationTime": "10:00～10:30",
+          "lotteryTime": "10:30",
+          "note": ""
+        },
+        {
+          "id": "shop-34-event-2",
+          "label": "大会②",
+          "date": "2026-07-12",
+          "dateDisplay": "26年7月12日（日）",
+          "ageLimit": "年齢無制限",
+          "startTime": "11:00",
+          "registrationTime": "10:00～10:30",
+          "lotteryTime": "10:30",
+          "note": ""
+        }
+      ],
+      "location": {
+        "lat": 35.008869,
+        "lng": 136.655441,
+        "geocodeLabel": "三重県四日市市富州原町２番４０号",
+        "geocodeQuery": "三重県四日市市富州原町2-40 イオンモール四日市北"
+      }
+    },
+    {
+      "id": "shop-35",
+      "name": "モーリーファンタジー津南店",
+      "address": "津市高茶屋小森町145 イオンモール津南3F",
+      "prefecture": "三重県",
+      "machineTypes": [
+        "おねがいアイプリ",
+        "アイプリバース",
+        "アイプリステーション"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E6%B4%A5%E5%B8%82%E9%AB%98%E8%8C%B6%E5%B1%8B%E5%B0%8F%E6%A3%AE%E7%94%BA145+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB%E6%B4%A5%E5%8D%973F",
+      "events": [
+        {
+          "id": "shop-35-event-1",
+          "label": "大会",
+          "date": "2026-07-18",
+          "dateDisplay": "26年7月18日（土）",
+          "ageLimit": "中学生以下",
+          "startTime": "10:45",
+          "registrationTime": "10:00～10:30",
+          "lotteryTime": "10:30",
+          "note": "抽選が終わり次第イベント開始"
+        }
+      ],
+      "location": {
+        "lat": 34.670269,
+        "lng": 136.517746,
+        "geocodeLabel": "三重県津市高茶屋小森町１４５番地",
+        "geocodeQuery": "三重県津市高茶屋小森町145 イオンモール津南"
+      }
+    },
+    {
+      "id": "shop-36",
+      "name": "NICOPA アピタ桑名",
+      "address": "三重県桑名市中央町3-21 アピタ桑名2F",
+      "prefecture": "三重県",
+      "machineTypes": [
+        "おねがいアイプリ"
+      ],
+      "participation": "参加費1名200円・定員30名を超えた場合抽選",
+      "mapsSearchUrl": "https://www.google.com/maps/search/%E4%B8%89%E9%87%8D%E7%9C%8C%E6%A1%91%E5%90%8D%E5%B8%82%E4%B8%AD%E5%A4%AE%E7%94%BA3-21+%E3%82%A2%E3%83%94%E3%82%BF%E6%A1%91%E5%90%8D2F%3CBR%3E",
+      "events": [
+        {
+          "id": "shop-36-event-1",
+          "label": "大会",
+          "date": "2026-07-11",
+          "dateDisplay": "26年7月11日（土）",
+          "ageLimit": "中学生以下",
+          "startTime": "12:00",
+          "registrationTime": "11:00～11:30",
+          "lotteryTime": "11:30",
+          "note": ""
+        }
+      ],
+      "location": {
+        "lat": 35.064228,
+        "lng": 136.687515,
+        "geocodeLabel": "三重県桑名市中央町三丁目２１番地",
+        "geocodeQuery": "三重県桑名市中央町3-21 アピタ桑名"
+      }
     }
   ],
-  "generatedAt": "2026-06-25T11:53:15.173Z"
+  "generatedAt": "2026-06-25T12:53:16.761Z"
 }

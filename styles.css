@@ -1,16 +1,17 @@
 :root {
   color-scheme: light;
-  --ink: #202330;
-  --muted: #687083;
-  --line: #d8e1ea;
+  --ink: #2d2847;
+  --muted: #746b8e;
+  --line: #ffd3e9;
   --paper: #ffffff;
-  --wash: #f5f8fc;
-  --aqua: #1c8f9f;
-  --aqua-dark: #126979;
-  --coral: #e7655b;
-  --sun: #f4b43f;
-  --green: #4d9b66;
-  --shadow: 0 10px 30px rgba(32, 35, 48, 0.08);
+  --wash: #fff7fc;
+  --aqua: #00a8c8;
+  --aqua-dark: #007f9c;
+  --coral: #ff69ab;
+  --coral-dark: #e84592;
+  --sun: #ffe767;
+  --green: #58c96e;
+  --shadow: 0 12px 28px rgba(255, 105, 171, 0.13);
 }
 
 * {
@@ -21,8 +22,14 @@ body {
   margin: 0;
   color: var(--ink);
   background:
-    linear-gradient(180deg, #eaf6f7 0, rgba(234, 246, 247, 0) 260px),
-    var(--wash);
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 105, 171, 0.08) 0 14px,
+      rgba(255, 231, 103, 0.1) 14px 28px,
+      rgba(0, 168, 200, 0.07) 28px 42px,
+      rgba(88, 201, 110, 0.06) 42px 56px
+    ),
+    linear-gradient(180deg, #fff0fa 0, #ecfbff 380px, #fffaf0 100%);
   font-family:
     "M PLUS Rounded 1c",
     "Hiragino Kaku Gothic ProN",
@@ -54,6 +61,9 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 22px clamp(16px, 4vw, 42px) 16px;
+  background: linear-gradient(90deg, #ff7ab6 0%, #fff47e 52%, #8debf4 100%);
+  border-bottom: 4px solid #ffffff;
+  box-shadow: 0 10px 24px rgba(255, 105, 171, 0.18);
 }
 
 .brand {
@@ -62,15 +72,20 @@ a {
 
 .kicker {
   margin: 0 0 2px;
-  color: var(--coral);
+  color: #ffffff;
   font-size: 0.9rem;
   font-weight: 800;
+  text-shadow: 0 2px 0 rgba(232, 69, 146, 0.45);
 }
 
 h1 {
   margin: 0;
   font-size: clamp(1.35rem, 1.1rem + 1vw, 2rem);
   line-height: 1.2;
+  color: #ffffff;
+  text-shadow:
+    0 2px 0 rgba(232, 69, 146, 0.55),
+    0 4px 14px rgba(0, 127, 156, 0.24);
 }
 
 .source-box {
@@ -79,7 +94,7 @@ h1 {
   align-items: center;
   justify-content: flex-end;
   min-width: min(420px, 42vw);
-  color: var(--muted);
+  color: #ffffff;
   font-size: 0.86rem;
   text-align: right;
 }
@@ -89,9 +104,10 @@ h1 {
   place-items: center;
   min-width: 48px;
   height: 34px;
-  border: 1px solid var(--line);
+  border: 2px solid #ffffff;
   border-radius: 8px;
-  background: var(--paper);
+  background: #ffffff;
+  color: var(--coral-dark);
   text-decoration: none;
   font-weight: 800;
 }
@@ -105,8 +121,8 @@ h1 {
   gap: 10px;
   align-items: end;
   padding: 12px clamp(16px, 4vw, 42px);
-  background: rgba(255, 255, 255, 0.94);
-  border-block: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.95);
+  border-block: 3px solid #ffc3e0;
   backdrop-filter: blur(12px);
 }
 
@@ -147,7 +163,7 @@ input,
 select {
   width: 100%;
   min-height: 42px;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 8px;
   background: var(--paper);
   color: var(--ink);
@@ -166,23 +182,23 @@ input:focus,
 select:focus,
 button:focus-visible {
   border-color: var(--aqua);
-  box-shadow: 0 0 0 3px rgba(28, 143, 159, 0.18);
+  box-shadow: 0 0 0 3px rgba(0, 168, 200, 0.2);
 }
 
 .segmented {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 8px;
-  background: #eef4f7;
+  background: #fff4fb;
   overflow: hidden;
 }
 
 .segmented button {
   min-height: 42px;
   border: 0;
-  border-right: 1px solid var(--line);
+  border-right: 2px solid var(--line);
   background: transparent;
   color: var(--muted);
   cursor: pointer;
@@ -194,8 +210,9 @@ button:focus-visible {
 }
 
 .segmented button.is-active {
-  background: var(--aqua);
+  background: linear-gradient(135deg, var(--coral), var(--aqua));
   color: white;
+  box-shadow: inset 0 -3px 0 rgba(255, 255, 255, 0.28);
 }
 
 .date-segmented {
@@ -211,14 +228,14 @@ button:focus-visible {
 .date-segmented button:last-child {
   flex: 1 1 82px;
   min-height: 38px;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 8px;
-  background: #eef4f7;
+  background: #fff4fb;
 }
 
 .date-segmented button.is-active {
-  border-color: var(--aqua);
-  background: var(--aqua);
+  border-color: #ffffff;
+  background: linear-gradient(135deg, var(--coral), var(--aqua));
   color: #ffffff;
 }
 
@@ -247,7 +264,7 @@ button:focus-visible {
   place-items: center;
   width: 42px;
   height: 42px;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 8px;
   background: var(--paper);
   color: var(--aqua-dark);
@@ -268,7 +285,8 @@ button:focus-visible {
   padding: 10px clamp(16px, 4vw, 42px);
   color: var(--muted);
   font-size: 0.9rem;
-  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 2px solid #ffdaee;
 }
 
 .summary-strip strong {
@@ -297,15 +315,15 @@ button:focus-visible {
   display: grid;
   gap: 12px;
   padding: 16px;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 8px;
   background: var(--paper);
   box-shadow: var(--shadow);
 }
 
 .shop-card.is-selected {
-  border-color: var(--aqua);
-  box-shadow: 0 0 0 3px rgba(28, 143, 159, 0.16), var(--shadow);
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px rgba(255, 105, 171, 0.18), var(--shadow);
 }
 
 .shop-head {
@@ -324,6 +342,7 @@ button:focus-visible {
   margin: 0;
   font-size: 1.05rem;
   line-height: 1.35;
+  color: var(--coral-dark);
 }
 
 .distance {
@@ -351,20 +370,25 @@ button:focus-visible {
   min-height: 26px;
   padding: 0 9px;
   border-radius: 999px;
-  background: #eff5f8;
+  background: #fff4fb;
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 800;
 }
 
+.chip.prefecture-chip {
+  background: rgba(255, 231, 103, 0.5);
+  color: #8a6600;
+}
+
 .chip.age-free {
-  background: rgba(77, 155, 102, 0.13);
-  color: #2f7447;
+  background: rgba(88, 201, 110, 0.15);
+  color: #28733d;
 }
 
 .chip.age-junior {
-  background: rgba(231, 101, 91, 0.13);
-  color: #a83f38;
+  background: rgba(255, 105, 171, 0.15);
+  color: #bb2f78;
 }
 
 .event-table {
@@ -377,7 +401,7 @@ button:focus-visible {
 .event-table th,
 .event-table td {
   padding: 8px 7px;
-  border-bottom: 1px solid #edf1f5;
+  border-bottom: 1px solid #ffe6f3;
   text-align: left;
   vertical-align: top;
 }
@@ -410,7 +434,7 @@ button:focus-visible {
   place-items: center;
   min-height: 38px;
   padding: 0 12px;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
   color: var(--ink);
@@ -421,8 +445,25 @@ button:focus-visible {
 
 .action-link.primary {
   border-color: var(--aqua);
-  background: var(--aqua);
+  background: linear-gradient(135deg, var(--aqua), #58c96e);
   color: #ffffff;
+}
+
+.calendar-link {
+  display: inline-grid;
+  place-items: center;
+  min-height: 30px;
+  margin-top: 7px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--coral), var(--aqua));
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 5px 12px rgba(255, 105, 171, 0.2);
 }
 
 .map-panel {
@@ -439,9 +480,9 @@ button:focus-visible {
 
 #map {
   min-height: calc(100vh - 238px);
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: 8px;
-  background: #dce8ef;
+  background: #dbf8ff;
   overflow: hidden;
 }
 
@@ -479,13 +520,13 @@ button:focus-visible {
 
 .map-drawer .shop-card {
   cursor: pointer;
-  box-shadow: 0 5px 18px rgba(32, 35, 48, 0.07);
+  box-shadow: 0 5px 18px rgba(255, 105, 171, 0.11);
 }
 
 .map-drawer .shop-card.is-selected {
   border-color: var(--coral);
-  background: linear-gradient(90deg, rgba(231, 101, 91, 0.15), var(--paper) 26%);
-  box-shadow: 0 0 0 3px rgba(231, 101, 91, 0.18), var(--shadow);
+  background: linear-gradient(90deg, rgba(255, 105, 171, 0.15), var(--paper) 28%);
+  box-shadow: 0 0 0 3px rgba(255, 105, 171, 0.18), var(--shadow);
 }
 
 .map-drawer .shop-card.is-selected::before {
@@ -504,7 +545,7 @@ button:focus-visible {
   place-items: center;
   min-height: 220px;
   padding: 24px;
-  border: 1px dashed var(--line);
+  border: 2px dashed var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.72);
   color: var(--muted);
@@ -519,7 +560,7 @@ button:focus-visible {
   max-width: min(420px, calc(100vw - 40px));
   padding: 12px 14px;
   border-radius: 8px;
-  background: #202330;
+  background: #2d2847;
   color: #ffffff;
   box-shadow: var(--shadow);
   font-size: 0.92rem;
