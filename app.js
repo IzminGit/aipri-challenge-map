@@ -108,10 +108,20 @@ function bindEvents() {
   });
 
   els.mapDrawer.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-map-shop]");
-    if (!button) return;
-    appState.selectedShopId = button.dataset.mapShop;
-    focusSelectedOnMap();
+    if (event.target.closest("a")) return;
+    const target = event.target.closest("[data-map-shop], .shop-card[data-shop-id]");
+    if (!target || !els.mapDrawer.contains(target)) return;
+    const shopId = target.dataset.mapShop || target.dataset.shopId;
+    selectShopOnMap(shopId, { scrollDrawer: false });
+  });
+
+  els.mapDrawer.addEventListener("keydown", (event) => {
+    if (!["Enter", " "].includes(event.key)) return;
+    if (event.target.closest("a, button, input, select")) return;
+    const card = event.target.closest(".shop-card[data-shop-id]");
+    if (!card || !els.mapDrawer.contains(card)) return;
+    event.preventDefault();
+    selectShopOnMap(card.dataset.shopId, { scrollDrawer: false });
   });
 }
 
@@ -184,10 +194,11 @@ function renderShopCard(shop, events, compact = false) {
   const machineChips = shop.machineTypes
     .map((type) => `<span class="chip">${escapeHtml(type)}</span>`)
     .join("");
-  const selectedClass = shop.id === appState.selectedShopId ? " is-selected" : "";
+  const selected = shop.id === appState.selectedShopId;
+  const selectedClass = selected ? " is-selected" : "";
 
   return `
-    <article class="shop-card${selectedClass}" data-shop-id="${shop.id}">
+    <article class="shop-card${selectedClass}" data-shop-id="${shop.id}" aria-current="${selected ? "true" : "false"}" tabindex="${compact ? "0" : "-1"}">
       <div class="shop-head">
         <div class="shop-title-row">
           <h2 class="shop-title">${escapeHtml(shop.name)}</h2>
@@ -274,7 +285,7 @@ function renderMap(filtered) {
     marker.bindPopup(renderPopup(shop, events));
     marker.on("click", () => {
       appState.selectedShopId = shop.id;
-      renderMapDrawer(filtered);
+      renderMapDrawer(filtered, { scrollToSelected: true });
       paintMarkers();
     });
     marker.addTo(markerLayer);
@@ -296,7 +307,7 @@ function renderMap(filtered) {
   }
 }
 
-function renderMapDrawer(filtered) {
+function renderMapDrawer(filtered, { scrollToSelected = false } = {}) {
   const selected = filtered.find((item) => item.shop.id === appState.selectedShopId) || filtered[0];
   if (!selected) {
     els.mapDrawer.innerHTML = `<div class="empty-state">条件に合う店舗がありません</div>`;
@@ -304,7 +315,20 @@ function renderMapDrawer(filtered) {
   }
 
   appState.selectedShopId = selected.shop.id;
-  els.mapDrawer.innerHTML = renderShopCard(selected.shop, selected.events, true);
+  const eventCount = filtered.reduce((sum, item) => sum + item.events.length, 0);
+  els.mapDrawer.innerHTML = `
+    <div class="map-drawer__header">
+      <strong>店舗一覧</strong>
+      <span>${filtered.length}店舗 / ${eventCount}大会</span>
+    </div>
+    <div class="map-shop-list">
+      ${filtered.map(({ shop, events }) => renderShopCard(shop, events, true)).join("")}
+    </div>
+  `;
+
+  if (scrollToSelected) {
+    requestAnimationFrame(() => scrollSelectedShopIntoView());
+  }
 }
 
 function renderCurrentLocation() {
@@ -328,6 +352,21 @@ function paintMarkers() {
   });
 }
 
+function selectShopOnMap(shopId, { scrollDrawer = true } = {}) {
+  if (!shopId) return;
+  appState.selectedShopId = shopId;
+  highlightSelectedShopCards();
+  focusSelectedOnMap({ scrollDrawer });
+}
+
+function highlightSelectedShopCards() {
+  els.mapDrawer.querySelectorAll(".shop-card[data-shop-id]").forEach((card) => {
+    const selected = card.dataset.shopId === appState.selectedShopId;
+    card.classList.toggle("is-selected", selected);
+    card.setAttribute("aria-current", selected ? "true" : "false");
+  });
+}
+
 function markerStyle(shopId) {
   const selected = shopId === appState.selectedShopId;
   return {
@@ -348,7 +387,7 @@ function renderPopup(shop, events) {
   `;
 }
 
-function focusSelectedOnMap() {
+function focusSelectedOnMap({ scrollDrawer = true } = {}) {
   if (!map || !appState.selectedShopId) return;
   const marker = markerByShopId.get(appState.selectedShopId);
   if (!marker) return;
@@ -356,6 +395,15 @@ function focusSelectedOnMap() {
   map.setView(latLng, Math.max(map.getZoom(), 13), { animate: true });
   marker.openPopup();
   paintMarkers();
+  highlightSelectedShopCards();
+  if (scrollDrawer) scrollSelectedShopIntoView();
+}
+
+function scrollSelectedShopIntoView() {
+  const selectedCard = [...els.mapDrawer.querySelectorAll(".shop-card[data-shop-id]")].find(
+    (card) => card.dataset.shopId === appState.selectedShopId,
+  );
+  selectedCard?.scrollIntoView({ block: "nearest", behavior: "smooth" });
 }
 
 function getFilteredShops() {

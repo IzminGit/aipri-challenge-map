@@ -239,6 +239,7 @@ button:focus-visible {
 }
 
 .shop-card {
+  position: relative;
   display: grid;
   gap: 12px;
   padding: 16px;
@@ -373,7 +374,7 @@ button:focus-visible {
 .map-panel {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 390px);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 440px);
   gap: 14px;
 }
 
@@ -393,7 +394,55 @@ button:focus-visible {
 .map-drawer {
   min-height: 0;
   max-height: calc(100vh - 238px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 10px;
+  overflow: hidden;
+}
+
+.map-drawer__header {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 2px 2px 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.map-drawer__header strong {
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.map-shop-list {
+  min-height: 0;
+  display: grid;
+  gap: 10px;
   overflow: auto;
+  padding: 0 4px 2px 0;
+}
+
+.map-drawer .shop-card {
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(32, 35, 48, 0.07);
+}
+
+.map-drawer .shop-card.is-selected {
+  border-color: var(--coral);
+  background: linear-gradient(90deg, rgba(231, 101, 91, 0.15), var(--paper) 26%);
+  box-shadow: 0 0 0 3px rgba(231, 101, 91, 0.18), var(--shadow);
+}
+
+.map-drawer .shop-card.is-selected::before {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  width: 4px;
+  border-radius: 0 6px 6px 0;
+  background: var(--coral);
+  content: "";
 }
 
 .empty-state {
@@ -500,6 +549,11 @@ button:focus-visible {
 
   .map-drawer {
     max-height: none;
+    overflow: visible;
+  }
+
+  .map-shop-list {
+    overflow: visible;
   }
 }
 
