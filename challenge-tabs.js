@@ -41,7 +41,7 @@
   });
 
   function setupDefaultMonthFilter() {
-    if (mode !== CURRENT_MODE || !window.appState && typeof appState === "undefined") return;
+    if (mode !== CURRENT_MODE || typeof appState === "undefined") return;
     const filter = document.querySelector("#dateFilter");
     if (!filter) return;
 
@@ -50,19 +50,35 @@
     );
     if (!hasSeptember) return;
 
-    let button = filter.querySelector(`[data-date="month:${DEFAULT_MONTH}"]`);
+    const monthKey = `month:${DEFAULT_MONTH}`;
+    let button = filter.querySelector(`[data-date="${monthKey}"]`);
     if (!button) {
       button = document.createElement("button");
       button.type = "button";
-      button.dataset.date = `month:${DEFAULT_MONTH}`;
+      button.dataset.date = monthKey;
       button.textContent = "9月";
       filter.insertBefore(button, filter.firstElementChild?.nextElementSibling || null);
     }
 
-    appState.date = `month:${DEFAULT_MONTH}`;
+    appState.date = monthKey;
     filter.querySelectorAll("[data-date]").forEach((item) => {
       item.classList.toggle("is-active", item === button);
     });
+
+    if (!window.__aipriMonthFilterPatched) {
+      const originalEventMatches = eventMatches;
+      eventMatches = (event) => {
+        if (appState.date === monthKey) {
+          if (!event.date?.startsWith(`${DEFAULT_MONTH}-`)) return false;
+          if (appState.age !== "all" && event.ageLimit !== appState.age) return false;
+          if (!timeMatches(event.registrationTime || event.startTime)) return false;
+          return true;
+        }
+        return originalEventMatches(event);
+      };
+      window.__aipriMonthFilterPatched = true;
+    }
+
     render();
   }
 
