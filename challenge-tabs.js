@@ -4,6 +4,7 @@
   const FETCHED_KEY = "aipri-challenge-fetched-v2";
   const CURRENT_MODE = "current";
   const PAST_MODE = "past";
+  const DEFAULT_MONTH = "2026-09";
 
   const legacyData = window.AIPRI_EVENT_DATA;
   const cachedCurrent = readJson(sessionStorage.getItem(CURRENT_KEY));
@@ -18,6 +19,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     injectStyles();
     injectTabs();
+    setupDefaultMonthFilter();
 
     if (mode === CURRENT_MODE && !cachedCurrent?.shops?.length && !sessionStorage.getItem(FETCHED_KEY)) {
       sessionStorage.setItem(FETCHED_KEY, "1");
@@ -37,6 +39,32 @@
         });
     }
   });
+
+  function setupDefaultMonthFilter() {
+    if (mode !== CURRENT_MODE || !window.appState && typeof appState === "undefined") return;
+    const filter = document.querySelector("#dateFilter");
+    if (!filter) return;
+
+    const hasSeptember = appState.data?.shops?.some((shop) =>
+      shop.events?.some((event) => event.date?.startsWith(`${DEFAULT_MONTH}-`)),
+    );
+    if (!hasSeptember) return;
+
+    let button = filter.querySelector(`[data-date="month:${DEFAULT_MONTH}"]`);
+    if (!button) {
+      button = document.createElement("button");
+      button.type = "button";
+      button.dataset.date = `month:${DEFAULT_MONTH}`;
+      button.textContent = "9月";
+      filter.insertBefore(button, filter.firstElementChild?.nextElementSibling || null);
+    }
+
+    appState.date = `month:${DEFAULT_MONTH}`;
+    filter.querySelectorAll("[data-date]").forEach((item) => {
+      item.classList.toggle("is-active", item === button);
+    });
+    render();
+  }
 
   function injectTabs() {
     if (document.querySelector("#challengeTabs")) return;
