@@ -1,7 +1,7 @@
 (() => {
-  const CURRENT_KEY = "aipri-challenge-current-v2";
+  const CURRENT_KEY = "aipri-challenge-current-v3";
   const MODE_KEY = "aipri-challenge-mode-v2";
-  const FETCHED_KEY = "aipri-challenge-fetched-v2";
+  const FETCHED_KEY = "aipri-challenge-fetched-v3";
   const CURRENT_MODE = "current";
   const PAST_MODE = "past";
   const DEFAULT_MONTH = "2026-09";
