@@ -1,10 +1,9 @@
 (() => {
-  const CURRENT_KEY = "aipri-challenge-current-v3";
+  const CURRENT_KEY = "aipri-challenge-current-v2";
   const MODE_KEY = "aipri-challenge-mode-v2";
-  const FETCHED_KEY = "aipri-challenge-fetched-v3";
+  const FETCHED_KEY = "aipri-challenge-fetched-v2";
   const CURRENT_MODE = "current";
   const PAST_MODE = "past";
-  const DEFAULT_MONTH = "2026-09";
 
   const legacyData = window.AIPRI_EVENT_DATA;
   const cachedCurrent = readJson(sessionStorage.getItem(CURRENT_KEY));
@@ -19,7 +18,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     injectStyles();
     injectTabs();
-    setupDefaultMonthFilter();
 
     if (mode === CURRENT_MODE && !cachedCurrent?.shops?.length && !sessionStorage.getItem(FETCHED_KEY)) {
       sessionStorage.setItem(FETCHED_KEY, "1");
@@ -39,48 +37,6 @@
         });
     }
   });
-
-  function setupDefaultMonthFilter() {
-    if (mode !== CURRENT_MODE || typeof appState === "undefined") return;
-    const filter = document.querySelector("#dateFilter");
-    if (!filter) return;
-
-    const hasSeptember = appState.data?.shops?.some((shop) =>
-      shop.events?.some((event) => event.date?.startsWith(`${DEFAULT_MONTH}-`)),
-    );
-    if (!hasSeptember) return;
-
-    const monthKey = `month:${DEFAULT_MONTH}`;
-    let button = filter.querySelector(`[data-date="${monthKey}"]`);
-    if (!button) {
-      button = document.createElement("button");
-      button.type = "button";
-      button.dataset.date = monthKey;
-      button.textContent = "9月";
-      filter.insertBefore(button, filter.firstElementChild?.nextElementSibling || null);
-    }
-
-    appState.date = monthKey;
-    filter.querySelectorAll("[data-date]").forEach((item) => {
-      item.classList.toggle("is-active", item === button);
-    });
-
-    if (!window.__aipriMonthFilterPatched) {
-      const originalEventMatches = eventMatches;
-      eventMatches = (event) => {
-        if (appState.date === monthKey) {
-          if (!event.date?.startsWith(`${DEFAULT_MONTH}-`)) return false;
-          if (appState.age !== "all" && event.ageLimit !== appState.age) return false;
-          if (!timeMatches(event.registrationTime || event.startTime)) return false;
-          return true;
-        }
-        return originalEventMatches(event);
-      };
-      window.__aipriMonthFilterPatched = true;
-    }
-
-    render();
-  }
 
   function injectTabs() {
     if (document.querySelector("#challengeTabs")) return;
